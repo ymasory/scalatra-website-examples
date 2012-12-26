@@ -1,5 +1,7 @@
 # scalatra-jelastic #
 
+Corresponds to the guide at [http://scalatra.org/2.2/guides/deployment/jelastic.html](http://scalatra.org/2.2/guides/deployment/jelastic.html).
+
 ## Build & Run ##
 
 ```sh

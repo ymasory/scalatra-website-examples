@@ -1,5 +1,7 @@
 # scalatra-cloudbees #
 
+Corresponds to the guide at [http://scalatra.org/2.2/guides/deployment/cloudbees.html](http://scalatra.org/2.2/guides/deployment/cloudbees.html).
+
 ## Build & Run ##
 
 ```sh
