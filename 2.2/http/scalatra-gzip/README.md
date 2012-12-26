@@ -5,7 +5,7 @@ Corresponds to the guide at [http://scalatra.org/2.2/guides/http/gzip.html](http
 ## Build & Run ##
 
 ```sh
-$ cd 
+$ cd scalatra-gzip
 $ ./sbt
 > container:start
 > browse

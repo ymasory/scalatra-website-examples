@@ -3,7 +3,7 @@
 ## Build & Run ##
 
 ```sh
-$ cd 
+$ cd scalatra-twirl
 $ ./sbt
 > container:start
 > browse

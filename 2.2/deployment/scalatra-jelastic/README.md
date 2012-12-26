@@ -5,7 +5,7 @@ Corresponds to the guide at [http://scalatra.org/2.2/guides/deployment/jelastic.
 ## Build & Run ##
 
 ```sh
-$ cd 
+$ cd scalatra-jelastic
 $ ./sbt
 > container:start
 > browse

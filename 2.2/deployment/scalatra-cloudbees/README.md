@@ -5,7 +5,7 @@ Corresponds to the guide at [http://scalatra.org/2.2/guides/deployment/cloudbees
 ## Build & Run ##
 
 ```sh
-$ cd 
+$ cd scalatra-cloudbees
 $ ./sbt
 > container:start
 > browse

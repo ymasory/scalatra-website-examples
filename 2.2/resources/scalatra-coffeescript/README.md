@@ -3,7 +3,7 @@
 ## Build & Run ##
 
 ```sh
-$ cd 
+$ cd scalatra-coffeescript
 $ ./sbt
 > container:start
 > browse
