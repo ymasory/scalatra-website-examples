@@ -1,9 +1,6 @@
-import com.bowlingx.sbt.plugins.Wro4jPlugin._
-import Wro4jKeys._
-
 organization := "org.scalatra"
 
-name := "scalatra-coffeescript"
+name := "org.scalatra.example"
 
 version := "0.1.0-SNAPSHOT"
 
@@ -24,8 +21,3 @@ libraryDependencies ++= Seq(
 
 resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
 
-// import task settings
-seq(wro4jSettings: _*)
-
-// If you use xsbt-web-plugin, this will add compiled files to your war file:
-(webappResources in Compile) <+= (targetFolder in generateResources in Compile)
