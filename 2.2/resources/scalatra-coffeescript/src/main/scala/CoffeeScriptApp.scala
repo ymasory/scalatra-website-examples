@@ -10,6 +10,8 @@ class CoffeeScriptApp extends ScalatraServlet {
         <h1>This is
           <a href="http://scalatra.org/2.2/guides/resources/coffeescript.html">resources/coffeescript</a>!
         </h1>
+
+        <script type="text/javascript" src="compiled/scripts.js"></script>
       </body>
     </html>
   }
