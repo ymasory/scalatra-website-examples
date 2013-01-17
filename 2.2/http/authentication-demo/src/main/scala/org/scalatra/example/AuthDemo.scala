@@ -1,7 +1,6 @@
 package org.scalatra.example
 
 import org.scalatra._
-import scalate.ScalateSupport
 
 class AuthDemo extends ScalatraServlet with AuthenticationSupport {
 
