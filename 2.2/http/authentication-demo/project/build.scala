@@ -6,7 +6,7 @@ object AuthenticationDemoBuild extends Build {
   val Name = "Authentication Demo"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.10.0"
-  val ScalatraVersion = "2.2.0-RC3"
+  val ScalatraVersion = "2.2.0-SNAPSHOT"
 
   import java.net.URL
   import com.github.siasia.PluginKeys.port
