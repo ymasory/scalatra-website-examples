@@ -5,15 +5,15 @@ import scalate.ScalateSupport
 
 class AuthDemo extends ScalatraServlet with AuthenticationSupport {
 
-  get("/?") {
+
+  get("/*") {
     basicAuth
-    val nodes = Seq(
-      <h1>Hello from Scalatra</h1>,
-      <p><a href="/auth/linked" >click</a></p>
-    )
-
-
+    <html>
+      <body>
+        <h1>Hello from Scalatra</h1>
+        <p>You are authenticated.</p>
+      </body>
+    </html>
   }
-
 
 }
