@@ -1,18 +1,15 @@
-import akka.actor.{Actor, Props, ActorSystem}
+import akka.actor.{ActorRef, Actor, Props, ActorSystem}
 import akka.dispatch.ExecutionContext
 import akka.util.Timeout
 import org.scalatra.akka.AkkaSupport
 import org.scalatra.{Accepted, ScalatraServlet}
 
-class MyActorApp extends ScalatraServlet with AkkaSupport {
+class MyActorApp(system:ActorSystem, myActor:ActorRef) extends ScalatraServlet with AkkaSupport {
 
-  import _root_.akka.pattern.ask
   protected implicit def executor: ExecutionContext = system.dispatcher
 
-  val system = ActorSystem()
+  import _root_.akka.pattern.ask
   implicit val timeout = Timeout(10)
-
-  val myActor = system.actorOf(Props[MyActor])
 
   get("/async") {
     myActor ? "Do stuff and give me an answer"
@@ -22,7 +19,6 @@ class MyActorApp extends ScalatraServlet with AkkaSupport {
     myActor ! "Hey, you know what?"
     Accepted()
   }
-
 }
 
 class MyActor extends Actor {
