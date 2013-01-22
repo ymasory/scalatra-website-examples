@@ -4,10 +4,11 @@ import _root_.akka.actor.ActorSystem
 import _root_.akka.dispatch.{Future, ExecutionContext}
 import _root_.akka.dispatch.{Promise => AkkaPromise}
 
-import org.scalatra._
-import akka.AkkaSupport
+
+import org.scalatra.akka.AkkaSupport
 
 import dispatch._
+import org.scalatra._
 
 object DispatchAkka {
 
@@ -25,8 +26,10 @@ class PageRetriever extends ScalatraServlet with AkkaSupport {
   implicit val system = ActorSystem()
   protected implicit def executor: ExecutionContext = system.dispatcher
 
+
   get("/") {
     DispatchAkka.retrievePage()
   }
 
 }
+
