@@ -1,3 +1,5 @@
+package com.example.app
+
 import akka.actor.{ActorRef, Actor, Props, ActorSystem}
 import akka.dispatch.ExecutionContext
 import akka.util.Timeout
