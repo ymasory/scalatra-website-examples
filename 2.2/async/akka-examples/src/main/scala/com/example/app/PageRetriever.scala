@@ -4,9 +4,6 @@ import _root_.akka.actor.ActorSystem
 import _root_.akka.dispatch.{Future, ExecutionContext}
 import _root_.akka.dispatch.{Promise => AkkaPromise}
 
-
-import org.scalatra.akka.AkkaSupport
-
 import dispatch._
 import org.scalatra._
 
@@ -21,7 +18,7 @@ object DispatchAkka {
   }
 }
 
-class PageRetriever(system: ActorSystem) extends ScalatraServlet with AkkaSupport {
+class PageRetriever(system: ActorSystem) extends ScalatraServlet with FutureSupport {
 
   protected implicit def executor: ExecutionContext = system.dispatcher
 
