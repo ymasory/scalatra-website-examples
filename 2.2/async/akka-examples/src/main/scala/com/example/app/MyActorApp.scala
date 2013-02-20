@@ -10,11 +10,12 @@ class MyActorApp(system:ActorSystem, myActor:ActorRef) extends ScalatraServlet w
   import _root_.akka.pattern.ask
   implicit val timeout = Timeout(10)
 
+  // You'll see the output from this in the browser.
   get("/async") {
     myActor ? "Do stuff and give me an answer"
   }
 
-
+  // You'll see the output from this in your terminal.
   get("/fire-forget") {
     myActor ! "Hey, you know what?"
     Accepted()
