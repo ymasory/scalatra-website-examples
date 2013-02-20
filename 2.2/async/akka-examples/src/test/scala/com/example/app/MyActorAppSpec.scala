@@ -4,13 +4,13 @@ import org.scalatra.test.specs2._
 
 // For more on Specs2, see http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
 class MyActorAppSpec extends ScalatraSpec { def is =
-  "GET / on MyScalatraServlet"                     ^
-    "should return status 200"                  ! root200^
+  "GET /async on MyActorApp"                     ^
+    "should return status 200"                  ! async200^
                                                 end
 
   addServlet(classOf[MyActorApp], "/*")
 
-  def root200 = get("/") {
+  def async200 = get("/actors/async") {
     status must_== 200
   }
 }
