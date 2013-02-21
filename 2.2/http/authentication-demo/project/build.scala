@@ -5,7 +5,7 @@ import org.scalatra.sbt.PluginKeys._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
 
-object MyScalatraWebAppBuild extends Build {
+object AuthenticationDemoBuild extends Build {
   val Organization = "com.example"
   val Name = "Authentication Demo"
   val Version = "0.1.0-SNAPSHOT"
