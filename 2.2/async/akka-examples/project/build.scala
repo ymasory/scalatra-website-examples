@@ -21,6 +21,7 @@ object MyScalatraWebAppBuild extends Build {
       version := Version,
       scalaVersion := ScalaVersion,
       resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
+      resolvers += "Akka Repo" at "http://repo.akka.io/repository",
       libraryDependencies ++= Seq(
         "net.databinder.dispatch" %% "dispatch-core" % "0.9.5",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
