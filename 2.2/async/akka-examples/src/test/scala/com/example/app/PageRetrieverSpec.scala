@@ -4,7 +4,7 @@ import org.scalatra.test.specs2._
 import akka.actor.{ActorSystem}
 
 class PageRetrieverSpec extends ScalatraSpec { def is =
-    "GET / on PageRetriever"                     ^
+  "GET / on PageRetriever"                      ^
     "should return status 200"                  ! root200^
     end
 
