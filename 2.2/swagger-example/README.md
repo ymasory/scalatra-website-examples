@@ -1,11 +1,10 @@
 Scalatra Swagger Flowershop
 ===========================
 
+Corresponds to the guide at [http://scalatra.org/2.2/guides/swagger.html](http://scalatra.org/2.2/guides/swagger.html)
+
 A sample API, including automatically generated, runnable API documentation,
 to demonstrate Scalatra's Swagger functionality.
-
-See the [Scalatra Swagger Guide](http://scalatra.org/2.2/guides/swagger.html)
-for more information on using Scalatra with Swagger.
 
 ## Build & Run ##
 

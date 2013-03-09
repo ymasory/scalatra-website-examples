@@ -1,7 +1,6 @@
 # Scalatra Atmosphere Example #
 
-A quick example app showing the new Atmosphere support in 
-[Scalatra](http://scalatra.org) 2.2.
+Corresponds to the guide at [http://scalatra.org/2.2/guides/async/atmosphere.html](http://scalatra.org/2.2/guides/async/atmosphere.html)
 
 ## Build & Run ##
 

@@ -1,5 +1,8 @@
 # Authentication Demo #
 
+Corresponds to the guide at [http://scalatra.org/2.2/guides/http/authentication.html](http://scalatra.org/2.2/guides/http/authentication.html)
+
+
 ## Build & Run ##
 
 ```sh
