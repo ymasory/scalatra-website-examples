@@ -175,6 +175,9 @@ object Template {
               </div>
             </div> <!-- /content -->
           </div> <!-- /container -->
+    <footer class="vcard" role="contentinfo">
+      
+    </footer>        
            
           <!-- Le javascript
           ================================================== -->
