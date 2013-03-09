@@ -5,7 +5,7 @@ import org.scalatra.sbt.PluginKeys._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
 
-object MyScalatraWebAppBuild extends Build {
+object AkkaExamplesBuild extends Build {
   val Organization = "com.example"
   val Name = "Akka Examples"
   val Version = "0.1.0-SNAPSHOT"
