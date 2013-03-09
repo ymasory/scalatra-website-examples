@@ -11,7 +11,7 @@ There's a scalatest example showing the use of before and after blocks to config
 
 ### Create the database
 
- Whether you're testing or running the application in a browser, you'll need a blank MySQL schema called `squeryltryout`. You can change database creds in org.scalatra.example.init.DatabaseInit.
+ Whether you're testing or running the application in a browser, you'll need a blank MySQL schema called `squeryltryout`. You can change database creds in `org.scalatra.example.init.DatabaseInit`.
 
 ### Run the application
 
