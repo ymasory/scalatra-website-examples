@@ -13,26 +13,16 @@ There's a scalatest example showing the use of before and after blocks to config
 
  Whether you're testing or running the application in a browser, you'll need a blank MySQL schema called `squeryltryout`. You can change database creds in `org.scalatra.example.init.DatabaseInit`.
 
-### Run the application
+## Build & Run ##
 
-To try it out, `git clone` the code and:
-
-1. Launch [SBT](http://www.scala-sbt.org/).
-
-```
-./sbt
-```
-
-2. Run Jetty
-
-```
-container:start
+```sh
+$ git clone https://github.com/scalatra/scalatra-website-examples.git
+$ cd scalatra-website-examples/2.2/persistence/scalatra-squeryl
+$ chmod +x sbt
+$ ./sbt
+> container:start
 ```
 
-3. Go to [http://localhost:8080/articles/create-db](http://localhost:8080/articles/create-db). This will create the database schema.
+Go to [http://localhost:8080/articles/create-db](http://localhost:8080/articles/create-db). This will create the database schema.
 
-4. You'll be redirected to an article creation form.
-
-5. Learn more at http://www.scalatra.org/
-
-6. Happy hacking!
+You'll be redirected to an article creation form.

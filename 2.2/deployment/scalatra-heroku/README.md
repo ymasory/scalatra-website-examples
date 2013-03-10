@@ -5,7 +5,9 @@ Corresponds to the guide at [http://scalatra.org/2.2/guides/deployment/heroku.ht
 ## Build & Run ##
 
 ```sh
-$ cd scalatra-heroku
+$ git clone https://github.com/scalatra/scalatra-website-examples.git
+$ cd scalatra-website-examples/2.2/deployment/scalatra-heroku
+$ chmod +x sbt
 $ ./sbt
 > container:start
 > browse

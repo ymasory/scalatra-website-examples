@@ -5,7 +5,9 @@ Corresponds to the guide at [http://scalatra.org/2.2/guides/async/akka.html](htt
 ## Build & Run ##
 
 ```sh
-$ cd akka-dispatch-example
+$ git clone https://github.com/scalatra/scalatra-website-examples.git
+$ cd scalatra-website-examples/2.2/async/akka-dispatch-example
+$ chmod +x sbt
 $ ./sbt
 > container:start
 > browse

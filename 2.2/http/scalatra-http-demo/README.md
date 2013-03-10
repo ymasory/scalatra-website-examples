@@ -3,7 +3,9 @@
 ## Build & Run ##
 
 ```sh
-$ cd Scalatra_HTTP_Demo
+$ git clone https://github.com/scalatra/scalatra-website-examples.git
+$ cd scalatra-website-examples/2.2/http/scalatra-http-demo
+$ chmod +x sbt
 $ ./sbt
 > container:start
 > browse

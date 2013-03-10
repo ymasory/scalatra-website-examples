@@ -9,7 +9,8 @@ to demonstrate Scalatra's Swagger functionality.
 ## Build & Run ##
 
 ```sh
-$ cd 2.2/swagger-example
+$ git clone https://github.com/scalatra/scalatra-website-examples.git
+$ cd scalatra-website-examples/2.2/swagger-example
 $ chmod +x sbt
 $ ./sbt
 > container:start

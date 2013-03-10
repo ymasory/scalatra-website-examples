@@ -5,7 +5,9 @@ Corresponds to the guide at [http://scalatra.org/2.2/guides/resources/less-css.h
 ## Build & Run ##
 
 ```sh
-$ cd scalatra-less-css
+$ git clone https://github.com/scalatra/scalatra-website-examples.git
+$ cd scalatra-website-examples/2.2/resources/scalatra-less-css
+$ chmod +x sbt
 $ ./sbt
 > container:start
 > browse

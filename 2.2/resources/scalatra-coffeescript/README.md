@@ -5,7 +5,9 @@ Corresponds to the guide at [http://scalatra.org/2.2/guides/resources/coffeescri
 ## Build & Run ##
 
 ```sh
-$ cd scalatra-coffeescript
+$ git clone https://github.com/scalatra/scalatra-website-examples.git
+$ cd scalatra-website-examples/2.2/resources/scalatra-coffeescript
+$ chmod +x sbt
 $ ./sbt
 > container:start
 > browse

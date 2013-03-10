@@ -5,7 +5,9 @@ Corresponds to the guide at [http://scalatra.org/2.2/guides/deployment/jelastic.
 ## Build & Run ##
 
 ```sh
-$ cd scalatra-jelastic
+$ git clone https://github.com/scalatra/scalatra-website-examples.git
+$ cd scalatra-website-examples/2.2/deployment/scalatra-jelastic
+$ chmod +x sbt
 $ ./sbt
 > container:start
 > browse
