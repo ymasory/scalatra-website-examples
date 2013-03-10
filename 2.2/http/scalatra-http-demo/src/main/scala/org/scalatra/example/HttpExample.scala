@@ -159,16 +159,18 @@ object Template {
               <h1>{ title }</h1>
             </div>
               <div class="row">
-                <div class="span4">
-                  <a href={url("date/2009/12/26")}>date example</a><br/>
-                  <a href={url("/form")}>form example</a><br/>
-                  <a href={url("/upload")}>upload</a><br/>
-                  <a href="/">hello world</a><br/>
-                  <a href={url("flash-map/form")}>flash scope</a><br/>
-                  <a href={url("/filter-example")}>filter example</a><br/>
-                  <a href={url("/cookies-example")}>cookies example</a><br/>
+                <div class="span3">
+                  <ul class="nav nav-list">
+                    <li><a href={url("/cookies-example")}>Cookies example</a></li>
+                    <li><a href={url("date/2009/12/26")}>Date example</a></li>
+                    <li><a href={url("/upload")}>File upload</a></li>
+                    <li><a href={url("/filter-example")}>Filter example</a></li>
+                    <li><a href={url("flash-map/form")}>Flash scope</a></li>
+                    <li><a href={url("/form")}>Form example</a></li>
+                    <li><a href="/">Hello world</a></li>
+                  </ul>
                 </div>
-                <div class="span8">
+                <div class="span9">
                   {content}
                 </div>
                 <hr/>
