@@ -10,11 +10,7 @@ import org.scalatra.json._
 import org.scalatra.swagger._
 
 // JSON-related libraries
-import scala.collection.JavaConverters._
 import org.json4s.{DefaultFormats, Formats}
-
-// Swagger base code
-import com.wordnik.swagger.core.ApiPropertiesReader
 
 // Our models
 import org.scalatra.example.swagger.models._
