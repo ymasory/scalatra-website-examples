@@ -11,9 +11,7 @@ import org.json4s.{DefaultFormats, Formats}
 // JSON handling support from Scalatra
 import org.scalatra.json._
 
-
-
-class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet with JacksonJsonSupport with SwaggerSupport  {
+class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet with NativeJsonSupport with SwaggerSupport  {
 
   // Sets up automatic case class to JSON output serialization, required by
   // the JValueResult trait.
@@ -64,8 +62,6 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
       case None => halt(404)
     }
   }
-
-
 }
 
 
