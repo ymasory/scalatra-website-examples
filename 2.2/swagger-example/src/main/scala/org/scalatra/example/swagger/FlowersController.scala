@@ -11,7 +11,7 @@ import org.scalatra.json._
 
 
 
-class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet with JacksonJsonSupport with JValueResult with SwaggerSupport with CorsSupport {
+class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet with JacksonJsonSupport with SwaggerSupport  {
 
   // Sets up automatic case class to JSON output serialization, required by
   // the JValueResult trait.
@@ -28,7 +28,20 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
     contentType = formats("json")
   }
 
-  models = Map(classOf[Flower])
+  
+
+  val getFlowers =
+    (apiOperation[List[Flower]]("getFlowers")
+      summary "Show all flowers"
+      notes "Shows all the flowers in the flower shop. You can search it too."
+      parameter queryParam[Option[String]]("name").description("A name to search for"))
+
+  val findBySlug =
+    (apiOperation[Flower]("findBySlug")
+      summary "Find by slug"
+      parameters (
+      pathParam[String]("slug").description("Slug of flower that needs to be fetched")))
+
 
   /*
    * Retrieve a list of flowers
@@ -46,19 +59,6 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
       case None => halt(404)
     }
   }
-
-
-  val getFlowers =
-    (apiOperation[List[Flower]]("getFlowers")
-      summary "Show all flowers"
-      notes "Shows all the flowers in the flower shop. You can search it too."
-      parameter queryParam[Option[String]]("name").description("A name to search for"))
-
-  val findBySlug =
-    (apiOperation[Flower]("findBySlug")
-      summary "Find by slug"
-      parameters (
-      pathParam[String]("slug").description("Slug of flower that needs to be fetched")))
 
 
 }
