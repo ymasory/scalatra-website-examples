@@ -3,8 +3,6 @@ package org.scalatra.example.swagger
 import org.scalatra.swagger.{JacksonSwaggerBase, Swagger, SwaggerBase}
 
 import org.scalatra.ScalatraServlet
-import com.fasterxml.jackson.databind._
-import org.json4s.jackson.Json4sScalaModule
 import org.json4s.{DefaultFormats, Formats}
 
 
