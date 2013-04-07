@@ -55,6 +55,9 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
     }
   }
 
+  /**
+   * Find a flower using its slug.
+   */
   get("/:slug", operation(findBySlug)) {
     FlowerData.all find (_.slug == params("slug")) match {
       case Some(b) => b
