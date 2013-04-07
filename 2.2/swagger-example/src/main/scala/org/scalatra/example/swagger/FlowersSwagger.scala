@@ -1,6 +1,6 @@
 package org.scalatra.example.swagger
 
-import org.scalatra.swagger.{JacksonSwaggerBase, Swagger, SwaggerBase}
+import org.scalatra.swagger.{NativeSwaggerBase, Swagger}
 
 import org.scalatra.ScalatraServlet
 import org.json4s.{DefaultFormats, Formats}
