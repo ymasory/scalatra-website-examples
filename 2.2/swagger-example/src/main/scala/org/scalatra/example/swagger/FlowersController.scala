@@ -23,7 +23,7 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
   override protected val applicationName = Some("flowers")
 
   // A description of our application. This will show up in the Swagger docs.
-  protected val applicationDescription = "The flowershop API. It exposes operations for browing and searching lists of flowers"
+  protected val applicationDescription = "The flowershop API. It exposes operations for browsing and searching lists of flowers"
 
   // Before every action runs, set the content type to be in JSON format.
   before() {
