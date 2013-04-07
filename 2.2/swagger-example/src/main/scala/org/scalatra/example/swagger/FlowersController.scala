@@ -1,6 +1,8 @@
 package org.scalatra.example.swagger
 
 import org.scalatra._
+
+// Swagger-specific Scalatra imports
 import org.scalatra.swagger._
 
 // JSON-related libraries
