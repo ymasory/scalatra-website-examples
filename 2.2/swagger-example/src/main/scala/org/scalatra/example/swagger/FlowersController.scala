@@ -30,14 +30,14 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
     contentType = formats("json")
   }
 
-  
-
+  // An API description about retrieving flowers.
   val getFlowers =
     (apiOperation[List[Flower]]("getFlowers")
       summary "Show all flowers"
       notes "Shows all the flowers in the flower shop. You can search it too."
       parameter queryParam[Option[String]]("name").description("A name to search for"))
 
+  // An API description about finding flowers using a slug.
   val findBySlug =
     (apiOperation[Flower]("findBySlug")
       summary "Find by slug"
@@ -45,7 +45,7 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
       pathParam[String]("slug").description("Slug of flower that needs to be fetched")))
 
 
-  /*
+  /**
    * Retrieve a list of flowers
    */
   get("/", operation(getFlowers)){
