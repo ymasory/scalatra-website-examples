@@ -43,13 +43,7 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet
    * Retrieve a list of flowers. It's possible to search by name by adding
    * a name=foo query string parameter.
    */
-  get("/",
-    summary("Show all flowers"),
-    nickname("getFlowers"),
-    responseClass("List[Flower]"),
-    parameters(Parameter("name", "A name to search for", DataType.String, paramType = ParamType.Query, required = false)),
-    endpoint(""),
-    notes("Shows all the flowers in the flower shop. You can search it too.")){
+  get("/",operation(getFlowers)){
     params.get("name") match {
       case Some(name) => FlowerData.all filter (_.name.toLowerCase contains name.toLowerCase)
       case None => FlowerData.all
@@ -59,20 +53,23 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet
   /*
    * Retrieve a single book based on its slug.
    */
-  get("/:slug",
-    summary("Find by slug"),
-    nickname("findBySlug"),
-    responseClass("Flower"),
-    endpoint("{slug}"),
-    notes("Returns the flower for the provided slug, if a matching flower exists."),
-    parameters(
-      Parameter("slug", "Slug of flower that needs to be fetched",
-        DataType.String,
-        paramType = ParamType.Path))) {
+  get("/:slug", operation(findBySlug)) {
     FlowerData.all find (_.slug == params("slug")) match {
       case Some(b) => b
       case None => halt(404)
     }
   }
+
+  val getFlowers =
+    (apiOperation[List[Flower]]("getFlowers")
+      summary "Show all flowers"
+      notes "Shows all the flowers in the flower shop. You can search it too."
+      parameter queryParam[Option[String]]("name").description("A name to search for"))
+
+  val findBySlug =
+    (apiOperation[Flower]("findBySlug")
+      summary "Find by slug"
+      parameters (
+      pathParam[String]("slug").description("Slug of flower that needs to be fetched")))
 
 }
