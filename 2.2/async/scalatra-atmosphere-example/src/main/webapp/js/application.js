@@ -19,7 +19,6 @@ $(function() {
     contentType: "application/json",
     logLevel: 'debug',
     transport: transport,
-    trackMessageLength : true,
     fallbackTransport: 'long-polling'
   };
 

@@ -1107,7 +1107,7 @@ jQuery.atmosphere = function() {
 
                     var message = message.data;
                     var isString =  typeof(message) == 'string';
-                    if(false){
+                    if(isString){
                        var skipCallbackInvocation = _trackMessageSize(message, _request, _response);
                        if (!skipCallbackInvocation) {
                            _invokeCallback();
