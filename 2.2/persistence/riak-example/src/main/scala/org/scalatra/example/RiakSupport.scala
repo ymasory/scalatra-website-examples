@@ -2,7 +2,6 @@ package org.scalatra.example
 
 import com.basho.riak.client.RiakFactory
 import org.slf4j.LoggerFactory
-import com.basho.riak.client.bucket.Bucket
 
 trait RiakJavaClientInit {
   val logger = LoggerFactory.getLogger(getClass)
