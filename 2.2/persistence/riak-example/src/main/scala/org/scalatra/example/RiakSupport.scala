@@ -28,7 +28,7 @@ trait RiakJavaClientInit {
 
 trait RiakSupport {
 
-  def myBucket: Bucket = {
+  def myBucket = {
     RiakFactory.pbcClient.fetchBucket("myBucket").execute
   }
 
