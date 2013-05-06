@@ -1,9 +1,6 @@
 package org.scalatra.example
 
 import org.scalatra._
-import scalate.ScalateSupport
-import com.basho.riak.client.{IRiakClient, RiakFactory}
-import com.basho.riak.client.bucket.Bucket
 
 /**
  * This controller uses the Basho-supported riak-java-client, and the binary connection
