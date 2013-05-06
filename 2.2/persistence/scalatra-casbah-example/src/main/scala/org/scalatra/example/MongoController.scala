@@ -11,7 +11,7 @@ class MongoController(mongoColl: MongoCollection) extends ScalatraCasbahExampleS
    * Insert a new object into the database. You can use the following from your console to try it out:
    *   curl -i -H "Accept: application/json" -X POST -d "key=super&value=duper" http://localhost:8080/insert
    */
-  post("/insert") {
+  post("/") {
     val key = params("key")
     val value = params("value")
     val newObj = MongoDBObject(key -> value)
@@ -21,7 +21,7 @@ class MongoController(mongoColl: MongoCollection) extends ScalatraCasbahExampleS
   /**
    * Retrieve everything in the MongoDb collection we're currently using.
    */
-  get("/all") {
+  get("/") {
     mongoColl.find()
     for { x <- mongoColl} yield x
   }
