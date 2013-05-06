@@ -32,9 +32,6 @@ trait RiakJavaClientInit {
 /**
  * A trait we can use to get a handle on the Riak bucket we created at
  * application start.
- *
- * The big questions here: does this need to be clustered? What are the implications
- * for thread-safety - do we need to be prefixing operations with a clientId?
  */
 trait RiakSupport {
 
