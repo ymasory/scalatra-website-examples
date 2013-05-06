@@ -4,13 +4,13 @@ import com.basho.riak.client.RiakFactory
 import org.slf4j.LoggerFactory
 import com.basho.riak.client.bucket.Bucket
 
-trait RiakInit {
+trait RiakJavaClientInit {
   val logger = LoggerFactory.getLogger(getClass)
 
   // get access to a bucket using a binary connection and the riak-java-client
   val riakClient = RiakFactory.pbcClient
 
-  def configureRiak() {
+  def configureRiakJavaClient() {
     logger.info("Creating a Riak bucket")
 
     // make sure we've got a bucket to use
@@ -18,7 +18,7 @@ trait RiakInit {
   }
 
 
-  def closeRiakConnection() {
+  def closeRiakJavaClient() {
     logger.info("Closing Riak client")
 
     riakClient.shutdown()

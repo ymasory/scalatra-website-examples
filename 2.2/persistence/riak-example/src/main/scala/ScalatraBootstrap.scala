@@ -2,14 +2,14 @@ import org.scalatra.example._
 import org.scalatra._
 import javax.servlet.ServletContext
 
-class ScalatraBootstrap extends LifeCycle with RiakInit {
+class ScalatraBootstrap extends LifeCycle with RiakJavaClientInit {
 
   override def init(context: ServletContext) {
-    configureRiak()
+    configureRiakJavaClient()
     context.mount(new SimpleRiakController, "/*")
   }
 
   override def destroy(context: ServletContext) {
-    closeRiakConnection()
+    closeRiakJavaClient()
   }
 }
