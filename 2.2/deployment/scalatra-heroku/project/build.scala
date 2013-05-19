@@ -1,30 +1,51 @@
 import sbt._
 import Keys._
+import org.scalatra.sbt._
+import org.scalatra.sbt.PluginKeys._
+import com.mojolly.scalate.ScalatePlugin._
+import ScalateKeys._
 
-object Build extends Build {
+object HerokuExampleBuild extends Build {
+  val Organization = "org.scalatra"
+  val Name = "Heroku Example"
+  val Version = "0.1.0-SNAPSHOT"
+  val ScalaVersion = "2.10.0"
+  val ScalatraVersion = "2.2.0"
 
-  import java.net.URL
-  import com.github.siasia.PluginKeys.port
-  import com.github.siasia.WebPlugin.container
-
-  val browse = TaskKey[Unit]("browse", "open web browser to localhost on container:port")
-  val browseTask = browse <<= (streams, port in container.Configuration) map { (streams, port) =>
-    import streams.log
-    val url = new URL("http://localhost:%s" format port)
-    try {
-      log info "Launching browser."
-      java.awt.Desktop.getDesktop.browse(url.toURI)
-    }
-    catch {
-      case _ => {
-        log info { "Could not open browser, sorry. Open manually to %s." format url.toExternalForm }
-      }
-    }
-  }
 
   lazy val project = Project (
-    "project",
+    "heroku-example",
     file("."),
-    settings = Defaults.defaultSettings ++ Seq(browseTask)
+    settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+      organization := Organization,
+      name := Name,
+      version := Version,
+      scalaVersion := ScalaVersion,
+      resolvers += Classpaths.typesafeReleases,
+      libraryDependencies ++= Seq(
+        "com.basho.riak" % "riak-client" % "1.1.0",
+        "org.scalatra" %% "scalatra" % ScalatraVersion,
+        "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
+        "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
+        "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
+        "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "compile;container",
+        "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+      ),
+      scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
+        Seq(
+          TemplateConfig(
+            base / "webapp" / "WEB-INF" / "templates",
+            Seq.empty,  /* default imports should be added here */
+            Seq(
+              Binding("context", "_root_.org.scalatra.scalate.ScalatraRenderContext", importMembers = true, isImplicit = true)
+            ),  /* add extra bindings here */
+            Some("templates")
+          )
+        )
+      }
+    )
   )
 }
+
+
+
