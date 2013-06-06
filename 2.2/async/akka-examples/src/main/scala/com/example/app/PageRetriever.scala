@@ -23,7 +23,9 @@ class PageRetriever(system: ActorSystem) extends ScalatraServlet with FutureSupp
   protected implicit def executor: ExecutionContext = system.dispatcher
 
   get("/") {
-    DispatchAkka.retrievePage()
+    new AsyncResult { val is =
+      DispatchAkka.retrievePage()
+    }
   }
 
 }
