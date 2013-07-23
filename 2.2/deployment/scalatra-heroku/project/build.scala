@@ -4,6 +4,7 @@ import org.scalatra.sbt._
 import org.scalatra.sbt.PluginKeys._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
+import com.typesafe.startscript._
 
 object HerokuExampleBuild extends Build {
   val Organization = "org.scalatra"
@@ -16,7 +17,7 @@ object HerokuExampleBuild extends Build {
   lazy val project = Project (
     "heroku-example",
     file("."),
-    settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+    settings = StartScriptPlugin.startScriptForClassesSettings ++ Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,
