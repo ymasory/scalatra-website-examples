@@ -26,6 +26,7 @@ object ScalatraCasbahExampleBuild extends Build {
         "org.json4s" % "json4s-jackson_2.10" % "3.2.5",
         "org.json4s" % "json4s-mongo_2.10" % "3.2.5",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
+        "org.scalatra" %% "scalatra-json" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
         "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
