@@ -1,6 +1,7 @@
 package org.scalatra.example
 
 import org.scalatra._
+import org.json4s.mongo.{JObjectParser, ObjectIdSerializer}
 import org.scalatra.json.JacksonJsonSupport
 import org.json4s._
 import org.json4s.mongo.{JObjectParser, ObjectIdSerializer}
@@ -40,14 +41,11 @@ class MongoController(mongoColl: MongoCollection)
     for ( x <- mongoColl.findOne(q) ) yield x
   }
 
-  // this is an approach to returning MongoDB results as JSON using json4s
-  implicit val jsonFormats = DefaultFormats + new ObjectIdSerializer
-
-  get("/asJson") {
+  get("/asJsonString") {
     mongoColl.find
   }
 
-  get("/asJson/:key/:value") {
+  get("/asJsonString/:key/:value") {
     val q = MongoDBObject(params("key") -> params("value"))
     mongoColl.findOne(q) match {
       case Some(x) => x
@@ -55,8 +53,38 @@ class MongoController(mongoColl: MongoCollection)
     }
   }
 
-  // convert MongoDB results to JValue
-  override protected def renderPipeline = ({
+  // this is an approach to returning MongoDB results as JSON using json4s
+  implicit val jsonFormats = DefaultFormats + new ObjectIdSerializer
+
+  get("/asJson4s") {
+    mongoColl.find
+  }
+
+  get("/asJson4s/:key/:value") {
+    val q = MongoDBObject(params("key") -> params("value"))
+    mongoColl.findOne(q) match {
+      case Some(x) => x
+      case None => halt(404)
+    }
+  }
+
+  // hook mongo support into render pipeline
+  override protected def renderPipeline = renderMongo orElse super.renderPipeline
+
+  // renders DBObject and MongoCursor as String making use of standard toString() methods
+  def renderMongo = {
+    case dbo: DBObject =>
+      contentType = formats("json")
+      dbo.toString
+
+    case xs: TraversableOnce[_] => // handles a MongoCursor
+      contentType = formats("json")
+      val l = xs map (x => x.toString) mkString(",")
+      "[" + l + "]"
+
+  }: RenderPipeline
+
+  def renderMongoToJson4s = {
     // handle DBObject
     case dbo: DBObject => JObjectParser.serialize(dbo)
 
@@ -66,11 +94,8 @@ class MongoController(mongoColl: MongoCollection)
     // handle Option[DBObject]
     case Some(dbo: DBObject) => JObjectParser.serialize(dbo)
     case None => JNothing
-  }: RenderPipeline) orElse super.renderPipeline
+  }: RenderPipeline
 
-  notFound {
-    // remove content type in case it was set through an action
-    contentType = null
-  }
+
 
 }
