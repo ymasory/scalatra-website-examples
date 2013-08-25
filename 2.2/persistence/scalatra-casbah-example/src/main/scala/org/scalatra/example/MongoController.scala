@@ -11,7 +11,7 @@ import com.mongodb.casbah.Imports._
 
 class MongoController(mongoColl: MongoCollection)
   extends ScalatraCasbahExampleStack
-  with JacksonJsonSupport /* this is optional and used by the json4s sample at the end */ {
+  with JacksonJsonSupport /* this is optional and used by the scalatra-json/json4s sample at the end */ {
 
   /**
    * Insert a new object into the database. You can use the following from your console to try it out:
@@ -41,34 +41,9 @@ class MongoController(mongoColl: MongoCollection)
     for ( x <- mongoColl.findOne(q) ) yield x
   }
 
-  get("/asJsonString") {
-    mongoColl.find
-  }
+  // in the following there are two approaches to returning MongoDB results as JSON string
 
-  get("/asJsonString/:key/:value") {
-    val q = MongoDBObject(params("key") -> params("value"))
-    mongoColl.findOne(q) match {
-      case Some(x) => x
-      case None => halt(404)
-    }
-  }
-
-  // this is an approach to returning MongoDB results as JSON using json4s
-  implicit val jsonFormats = DefaultFormats + new ObjectIdSerializer
-
-  get("/asJson4s") {
-    mongoColl.find
-  }
-
-  get("/asJson4s/:key/:value") {
-    val q = MongoDBObject(params("key") -> params("value"))
-    mongoColl.findOne(q) match {
-      case Some(x) => x
-      case None => halt(404)
-    }
-  }
-
-  // hook mongo support into render pipeline
+  // hook simple mongo support into render pipeline
   override protected def renderPipeline = renderMongo orElse super.renderPipeline
 
   // renders DBObject and MongoCursor as String making use of standard toString() methods
@@ -84,6 +59,11 @@ class MongoController(mongoColl: MongoCollection)
 
   }: RenderPipeline
 
+  // this is required by scalatra-json and json4s
+  implicit val jsonFormats = DefaultFormats + new ObjectIdSerializer
+
+  // converts DBObject and MongoCursor to json4s JValue
+  // JValue is handled by scalatra-json
   def renderMongoToJson4s = {
     // handle DBObject
     case dbo: DBObject => JObjectParser.serialize(dbo)
