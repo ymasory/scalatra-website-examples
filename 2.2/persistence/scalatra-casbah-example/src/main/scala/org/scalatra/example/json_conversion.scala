@@ -7,7 +7,7 @@ import org.json4s._
 import org.json4s.mongo.{JObjectParser, ObjectIdSerializer}
 
 /**
- * this is a simple approach for converting MongoDB results to JSON strings
+ * This is a simple approach for converting MongoDB results to JSON strings.
  */
 trait SimpleMongoDbJsonConversion extends ScalatraBase with ApiFormats {
 
@@ -30,25 +30,23 @@ trait SimpleMongoDbJsonConversion extends ScalatraBase with ApiFormats {
 }
 
 /**
- * this is alternative approach using json4s
+ * This is alternative approach using json4s and scalatra-json.
  */
 trait Json4sMongoDbJsonConversion extends JacksonJsonSupport {
 
-  // required by scalatra-json and json4s
+  // required by scalatra-json
   implicit val jsonFormats = DefaultFormats + new ObjectIdSerializer
 
   // converts DBObject and MongoCursor to json4s JValue
-  // JValue is handled by scalatra-json
+  // JValue is handled by scalatra-json and converted to string there
+  // scalatra-json also takes care of setting the content type
   def transformMongoObjectsToJson4s = {
-    // handle DBObject
     case dbo: DBObject => JObjectParser.serialize(dbo)
 
-    // handle MongoCursor
-    case xs: TraversableOnce[_] => JArray(xs.toList.map { x => JObjectParser.serialize(x) })
 
-    // handle Option[DBObject]
-    case Some(dbo: DBObject) => JObjectParser.serialize(dbo)
-    case None => JNothing
+    case xs: TraversableOnce[_] =>
+      // handle MongoCursor
+      JArray(xs.toList.map { x => JObjectParser.serialize(x) })
   }: RenderPipeline
 
   // hook into render pipeline
