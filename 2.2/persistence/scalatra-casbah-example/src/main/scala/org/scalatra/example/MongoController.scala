@@ -28,8 +28,7 @@ class MongoController(mongoColl: MongoCollection)
    * Retrieve everything in the MongoDb collection we're currently using.
    */
   get("/") {
-    mongoColl.find()
-    for { x <- mongoColl} yield x
+    mongoColl.find
   }
 
   /**
@@ -38,7 +37,10 @@ class MongoController(mongoColl: MongoCollection)
    */
   get("/query/:key/:value") {
     val q = MongoDBObject(params("key") -> params("value"))
-    for ( x <- mongoColl.findOne(q) ) yield x
+    mongoColl.findOne(q) match {
+      case Some(x) => x
+      case None => halt(404)
+    }
   }
 
   // in the following there are two approaches to returning MongoDB results as JSON string
@@ -75,7 +77,5 @@ class MongoController(mongoColl: MongoCollection)
     case Some(dbo: DBObject) => JObjectParser.serialize(dbo)
     case None => JNothing
   }: RenderPipeline
-
-
 
 }
