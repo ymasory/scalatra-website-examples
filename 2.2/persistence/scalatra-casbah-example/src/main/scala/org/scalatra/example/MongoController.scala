@@ -9,9 +9,54 @@ import org.json4s.mongo.{JObjectParser, ObjectIdSerializer}
 // MongoDb-specific imports
 import com.mongodb.casbah.Imports._
 
-class MongoController(mongoColl: MongoCollection)
-  extends ScalatraCasbahExampleStack
-  with JacksonJsonSupport /* this is optional and used by the scalatra-json/json4s sample at the end */ {
+/**
+ * this is a simple approach for converting MongoDB results to JSON strings
+ */
+trait SimpleMongoDbJsonConversion extends ScalatraBase with ApiFormats {
+
+  // renders DBObject and MongoCursor as String making use of standard toString() methods
+  def renderMongo = {
+    case dbo: DBObject =>
+      contentType = formats("json")
+      dbo.toString
+
+    case xs: TraversableOnce[_] => // handles a MongoCursor
+      contentType = formats("json")
+      val l = xs map (x => x.toString) mkString(",")
+      "[" + l + "]"
+
+  }: RenderPipeline
+
+  // hook simple mongo support into render pipeline
+  override protected def renderPipeline = renderMongo orElse super.renderPipeline
+
+}
+
+/**
+ * this is alternative approach using json4s
+ */
+trait Json4sMongoDbJsonConversion extends JacksonJsonSupport {
+
+  // required by scalatra-json and json4s
+  implicit val jsonFormats = DefaultFormats + new ObjectIdSerializer
+
+  // converts DBObject and MongoCursor to json4s JValue
+  // JValue is handled by scalatra-json
+  def renderMongoToJson4s = {
+    // handle DBObject
+    case dbo: DBObject => JObjectParser.serialize(dbo)
+
+    // handle MongoCursor
+    case xs: TraversableOnce[_] => JArray(xs.toList.map { x => JObjectParser.serialize(x) })
+
+    // handle Option[DBObject]
+    case Some(dbo: DBObject) => JObjectParser.serialize(dbo)
+    case None => JNothing
+  }: RenderPipeline
+
+}
+
+class MongoController(mongoColl: MongoCollection) extends ScalatraCasbahExampleStack with SimpleMongoDbJsonConversion {
 
   /**
    * Insert a new object into the database. You can use the following from your console to try it out:
@@ -42,40 +87,5 @@ class MongoController(mongoColl: MongoCollection)
       case None => halt(404)
     }
   }
-
-  // in the following there are two approaches to returning MongoDB results as JSON string
-
-  // hook simple mongo support into render pipeline
-  override protected def renderPipeline = renderMongo orElse super.renderPipeline
-
-  // renders DBObject and MongoCursor as String making use of standard toString() methods
-  def renderMongo = {
-    case dbo: DBObject =>
-      contentType = formats("json")
-      dbo.toString
-
-    case xs: TraversableOnce[_] => // handles a MongoCursor
-      contentType = formats("json")
-      val l = xs map (x => x.toString) mkString(",")
-      "[" + l + "]"
-
-  }: RenderPipeline
-
-  // this is required by scalatra-json and json4s
-  implicit val jsonFormats = DefaultFormats + new ObjectIdSerializer
-
-  // converts DBObject and MongoCursor to json4s JValue
-  // JValue is handled by scalatra-json
-  def renderMongoToJson4s = {
-    // handle DBObject
-    case dbo: DBObject => JObjectParser.serialize(dbo)
-
-    // handle MongoCursor
-    case xs: TraversableOnce[_] => JArray(xs.toList.map { x => JObjectParser.serialize(x) })
-
-    // handle Option[DBObject]
-    case Some(dbo: DBObject) => JObjectParser.serialize(dbo)
-    case None => JNothing
-  }: RenderPipeline
 
 }

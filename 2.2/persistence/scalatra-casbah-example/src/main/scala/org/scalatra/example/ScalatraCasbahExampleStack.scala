@@ -7,7 +7,7 @@ import org.fusesource.scalate.layout.DefaultLayoutStrategy
 import javax.servlet.http.HttpServletRequest
 import collection.mutable
 
-trait ScalatraCasbahExampleStack extends ScalatraServlet with ScalateSupport {
+trait ScalatraCasbahExampleStack extends ScalatraServlet with ScalateSupport with ApiFormats {
 
   /* wire up the precompiled templates */
   override protected def defaultTemplatePath: List[String] = List("/WEB-INF/templates/views")
