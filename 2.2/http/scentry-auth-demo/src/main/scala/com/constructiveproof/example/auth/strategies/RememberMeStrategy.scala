@@ -75,8 +75,11 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
     if (user != null){
       user.forgetMe
     }
-    app.cookies.update(COOKIE_KEY, null)
+    app.cookies.get(COOKIE_KEY) foreach {
+      _ => app.cookies.delete(COOKIE_KEY)
+    }
   }
+
 
   /**
    * Used to easily match a checkbox value
