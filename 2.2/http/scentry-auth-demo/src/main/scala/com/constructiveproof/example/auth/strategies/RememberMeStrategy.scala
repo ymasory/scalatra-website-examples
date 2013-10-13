@@ -16,6 +16,9 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
   val COOKIE_KEY = "rememberMe"
   private val oneWeek = 7 * 24 * 3600
 
+  /***
+    * Grab the value of the rememberMe cookie token.
+    */
   private def tokenVal = {
     app.cookies.get(COOKIE_KEY) match {
       case Some(token) => token
