@@ -13,7 +13,6 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
 
   override def name: String = "RememberMe"
 
-
   val COOKIE_KEY = "rememberMe"
   private val oneWeek = 7 * 24 * 3600
 
@@ -24,6 +23,9 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
     }
   }
 
+  /***
+    * Determine whether the strategy should be run for the current request.
+    */
   override def isValid(implicit request: HttpServletRequest):Boolean = {
     logger.info("RememberMeStrategy: determining isValid: " + (tokenVal != "").toString())
     tokenVal != ""
@@ -40,7 +42,9 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
     else None
   }
 
-
+  /**
+   * What should happen if the user is currently not authenticated?
+   */
   override def unauthenticated()(implicit request: HttpServletRequest, response: HttpServletResponse) {
     app.redirect("/sessions/new")
   }
@@ -63,14 +67,15 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
     }
   }
 
+  /**
+   * Run this code before logout, to clean up any leftover database state and delete the rememberMe token cookie.
+   */
   override def beforeLogout(user: User)(implicit request: HttpServletRequest, response: HttpServletResponse) = {
     logger.info("rememberMe: beforeLogout")
     if (user != null){
       user.forgetMe
     }
-    app.cookies.get(COOKIE_KEY) foreach {
-      _ => app.cookies.update(COOKIE_KEY, null)
-    }
+    app.cookies.update(COOKIE_KEY, null)
   }
 
   /**
