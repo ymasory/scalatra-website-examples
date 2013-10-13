@@ -6,8 +6,11 @@ import com.constructiveproof.example.auth.AuthenticationSupport
 
 class SessionsController extends ScentryauthdemoStack with AuthenticationSupport {
 
-  before() {
-    redirectIfLoggedIn()
+  before("/new") {
+    logger.info("SessionsController: checking whether to run RememberMeStrategy: " + !isAuthenticated)
+    if(!isAuthenticated) {
+      scentry.authenticate("RememberMe")
+    }
   }
 
   get("/new") {
@@ -23,6 +26,11 @@ class SessionsController extends ScentryauthdemoStack with AuthenticationSupport
     }else{
       redirect("/sessions/new")
     }
+  }
+
+  get("/logout") {
+    scentry.logout()
+    redirect("/")
   }
 
 }

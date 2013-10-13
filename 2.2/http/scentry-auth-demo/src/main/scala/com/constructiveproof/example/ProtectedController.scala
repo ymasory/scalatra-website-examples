@@ -16,10 +16,6 @@ class ProtectedController extends ScentryauthdemoStack with AuthenticationSuppor
   get("/") {
     "This is a protected controller action. If you can see it, you're logged in."
   }
-
-  get("/already-logged-in") {
-    "You are already logged in."
-  }
 }
 
 

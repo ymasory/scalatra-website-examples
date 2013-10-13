@@ -25,12 +25,6 @@ trait AuthenticationSupport extends ScalatraBase with ScentrySupport[User] {
     }
   }
 
-  protected def redirectIfLoggedIn() = {
-    if(isAuthenticated) {
-      redirect("/already-logged-in")
-    }
-  }
-
   override protected def configureScentry = {
     scentry.unauthenticated {
       scentry.strategies("UserPassword").unauthenticated()

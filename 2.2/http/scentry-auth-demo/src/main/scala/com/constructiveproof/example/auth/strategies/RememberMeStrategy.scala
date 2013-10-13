@@ -11,6 +11,8 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
 
   val logger = LoggerFactory.getLogger(getClass)
 
+  override def name: String = "RememberMe"
+
 
   val COOKIE_KEY = "rememberMe"
   private val oneWeek = 7 * 24 * 3600
@@ -22,25 +24,20 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
     }
   }
 
-  def isValid = {
-    logger.info("RememberMeStrategy: determining isValid")
+  override def isValid(implicit request: HttpServletRequest):Boolean = {
+    logger.info("RememberMeStrategy: determining isValid: " + (tokenVal != "").toString())
     tokenVal != ""
   }
 
+  /***
+    * In a real application, we'd check the cookie's token value against a known hash, probably saved in a
+    * datastore, to see if we should accept the cookie's token. Here, we'll just see if it's the one we set
+    * earlier ("foobar") and accept it if so.
+    */
   def authenticate()(implicit request: HttpServletRequest, response: HttpServletResponse) = {
     logger.info("RememberMeStrategy: attempting authentication")
-
-//    User.validateRememberToken(token) match {
-//      case None => {
-//        None
-//      }
-//      case Some(usr) ⇒ {
-//        logger.info("rememberMe: validated["+token+"]")
-//        Some(usr)
-//      }           //
-//    }
-
-    None
+    if(tokenVal == "foobar") Some(User("foo"))
+    else None
   }
 
 
@@ -48,12 +45,18 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
     app.redirect("/sessions/new")
   }
 
-  def afterAuthenticate(winningStrategy: Symbol, user: User) = {
+  /***
+    * After successfully authenticating with either the RememberMeStrategy, or the UserPasswordStrategy with the
+    * "remember me" tickbox checked, we set a rememberMe cookie for later use.
+    */
+  override def afterAuthenticate(winningStrategy: String, user: User)(implicit request: HttpServletRequest, response: HttpServletResponse) = {
     logger.info("rememberMe: afterAuth fired")
+    logger.info("winningStrategy is: " + winningStrategy)
+    logger.info("rememberMe param is: " + app.params.get("rememberMe"))
     if (winningStrategy == "RememberMe" ||
       (winningStrategy == "UserPassword" && checkbox2boolean(app.params.get("rememberMe").getOrElse("").toString))) {
 
-      val token = "foopads" //user.rememberMe.value
+      val token = "foobar"
       logger.info("rememberMe: set Cookie["+token+"]")
       app.response.addHeader("Set-Cookie",
         Cookie(COOKIE_KEY, token)(CookieOptions(secure = false, maxAge = oneWeek, httpOnly = true)).toCookieString)
