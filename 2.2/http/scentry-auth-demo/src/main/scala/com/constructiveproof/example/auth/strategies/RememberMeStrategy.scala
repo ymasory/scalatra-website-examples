@@ -55,13 +55,10 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
     */
   override def afterAuthenticate(winningStrategy: String, user: User)(implicit request: HttpServletRequest, response: HttpServletResponse) = {
     logger.info("rememberMe: afterAuth fired")
-    logger.info("winningStrategy is: " + winningStrategy)
-    logger.info("rememberMe param is: " + app.params.get("rememberMe"))
     if (winningStrategy == "RememberMe" ||
       (winningStrategy == "UserPassword" && checkbox2boolean(app.params.get("rememberMe").getOrElse("").toString))) {
 
       val token = "foobar"
-      logger.info("rememberMe: set Cookie["+token+"]")
       app.response.addHeader("Set-Cookie",
         Cookie(COOKIE_KEY, token)(CookieOptions(secure = false, maxAge = oneWeek, httpOnly = true)).toCookieString)
     }
