@@ -62,8 +62,7 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
       (winningStrategy == "UserPassword" && checkbox2boolean(app.params.get("rememberMe").getOrElse("").toString))) {
 
       val token = "foobar"
-      app.response.addHeader("Set-Cookie",
-        Cookie(COOKIE_KEY, token)(CookieOptions(secure = false, maxAge = oneWeek, httpOnly = true)).toCookieString)
+      app.cookies.set(COOKIE_KEY, token)(CookieOptions(path = "/", secure = false, maxAge = oneWeek, httpOnly = true))
     }
   }
 
@@ -75,9 +74,7 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
     if (user != null){
       user.forgetMe
     }
-    app.cookies.get(COOKIE_KEY) foreach {
-      _ => app.cookies.delete(COOKIE_KEY)
-    }
+    app.cookies.delete(COOKIE_KEY)(CookieOptions(path = "/", secure = false, httpOnly = true))
   }
 
 
