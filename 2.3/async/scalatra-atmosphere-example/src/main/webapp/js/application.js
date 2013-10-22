@@ -3,8 +3,9 @@ $(function() {
 
   var detect = $("#detect");
   var header = $('#header');
-  var content = $('#content');
+  var messages = $('#messages');
   var input = $('#input');
+  var inputText = $("#intxt");
   var status = $('#status');
   var myName = false;
   var author = null;
@@ -23,11 +24,12 @@ $(function() {
   };
 
   request.onOpen = function(response) {
-    content.html($('<p>', {
-      text: 'Atmosphere connected using ' + response.transport
-    }));
-    input.removeAttr('disabled').focus();
-    status.text('Choose name:');
+    addSysMessage('Atmosphere connected using ' + response.transport);
+
+    detect.hide();
+    input.show();
+
+    status.hide();
     transport = response.transport;
 
     if (response.transport == "local") {
@@ -47,7 +49,7 @@ $(function() {
     var message = rs.responseBody;
     try {
       var json = jQuery.parseJSON(message);
-      console.log("got a message")
+      console.log("Got a message")
       console.log(json)
     } catch (e) {
       console.log('This doesn\'t look like a valid JSON object: ', message.data);
@@ -56,14 +58,18 @@ $(function() {
 
     if (!logged) {
       logged = true;
-      status.text(myName + ': ').css('color', 'blue');
-      input.removeAttr('disabled').focus();
       subSocket.pushLocal(myName);
     } else {
-      input.removeAttr('disabled');
       var me = json.author == author;
       var date = typeof(json.time) == 'string' ? parseInt(json.time) : json.time;
-      addMessage(json.author, json.message, me ? 'blue' : 'black', new Date(date));
+      addMessage(
+        {
+          type: me ? 'primary' : 'default',
+          text: json.author
+        },
+        json.message,
+        new Date(date)
+      );
     }
   };
 
@@ -72,14 +78,15 @@ $(function() {
   };
 
   request.onError = function(rs) {
-    content.html($('<p>', {
-      text: 'Sorry, but there\'s some problem with your ' + 'socket or the server is down'
-    }));
+    messages
+      .add('li')
+      .addClass('list-group-item')
+      .text('Sorry, but there\'s some problem with your socket or the server is down');
   };
 
   subSocket = socket.subscribe(request);
 
-  input.keydown(function(e) {
+  inputText.keydown(function(e) {
     if (e.keyCode === 13) {
       var msg = $(this).val();
 
@@ -95,23 +102,47 @@ $(function() {
 
       subSocket.push(jQuery.stringifyJSON(json));
       $(this).val('');
+      $(this).attr('placeholder',  'Enter your message...');
 
 
-      if (myName === false) {
+      if(myName === false) {
         myName = msg;
         logged = true;
-        status.text(myName + ': ').css('color', 'blue');
-        input.removeAttr('disabled').focus();
         subSocket.pushLocal(myName);
+        addSysMessage("You are now known as: " + myName);
       } else {
-//        input.attr('disabled', 'disabled');
-        addMessage(author, msg, 'blue', new Date);
+        addMessage(
+          {
+            type: "primary",
+            text: author
+          },
+          msg
+        );
       }
     }
   });
 
-  function addMessage(author, message, color, datetime) {
-    content.append(
-        '<p><span style="color:' + color + '">' + author + '</span> @ ' + +(datetime.getHours() < 10 ? '0' + datetime.getHours() : datetime.getHours()) + ':' + (datetime.getMinutes() < 10 ? '0' + datetime.getMinutes() : datetime.getMinutes()) + ': ' + message + '</p>');
+  function addSysMessage(msg) {
+    addMessage(
+      {
+        type: 'info',
+        text: 'System'
+      },
+      msg
+    );
+  }
+
+  function addMessage(label, msg, datetime) {
+    if(datetime == null) {
+        datetime = new Date();
+    }
+    var time = (datetime.getHours() < 10 ? '0' + datetime.getHours() : datetime.getHours()) + ':' + (datetime.getMinutes() < 10 ? '0' + datetime.getMinutes() : datetime.getMinutes());
+    if(label != null) {
+      messages
+        .append("<li class='list-group-item'><span class='label label-" + label.type + "'>" + label.text + "</span> [" + time + "]: " + msg + "</li>");
+    } else {
+      messages
+        .append("<li class='list-group-item'>[" + time + "]: " + msg + "</li>");
+    }
   }
 });
