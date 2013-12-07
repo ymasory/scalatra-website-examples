@@ -15,6 +15,8 @@ class SessionsController extends ScentryauthdemoStack with AuthenticationSupport
   }
 
   get("/new") {
+    if (isAuthenticated) redirect("/")
+
     contentType="text/html"
     ssp("/sessions/new")
   }

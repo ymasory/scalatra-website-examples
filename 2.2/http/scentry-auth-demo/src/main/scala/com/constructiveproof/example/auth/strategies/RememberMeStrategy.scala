@@ -55,6 +55,9 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
   /***
     * After successfully authenticating with either the RememberMeStrategy, or the UserPasswordStrategy with the
     * "remember me" tickbox checked, we set a rememberMe cookie for later use.
+    *
+    * NB make sure you set a cookie path, or you risk getting weird problems because you've accidentally set
+    * more than 1 cookie.
     */
   override def afterAuthenticate(winningStrategy: String, user: User)(implicit request: HttpServletRequest, response: HttpServletResponse) = {
     logger.info("rememberMe: afterAuth fired")
@@ -62,7 +65,7 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
       (winningStrategy == "UserPassword" && checkbox2boolean(app.params.get("rememberMe").getOrElse("").toString))) {
 
       val token = "foobar"
-      app.cookies.set(COOKIE_KEY, token)(CookieOptions(maxAge = oneWeek))
+      app.cookies.set(COOKIE_KEY, token)(CookieOptions(maxAge = oneWeek, path = "/"))
     }
   }
 
