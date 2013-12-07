@@ -12,7 +12,6 @@ object User {
 		User.findByLogin(username) match {
 			case Some(user) => {
 		    if(username == user.login && password == user.password){
-		      // updateRememberMe(user)
 		      Some(user)
 		    }else{
 		      None

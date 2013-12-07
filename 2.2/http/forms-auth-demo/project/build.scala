@@ -10,7 +10,7 @@ object FormsAuthDemoBuild extends Build {
   val Name = "Forms Auth Demo"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.10.0"
-  val ScalatraVersion = "2.2.0"
+  val ScalatraVersion = "2.2.2"
 
   lazy val project = Project (
     "forms-auth-demo",

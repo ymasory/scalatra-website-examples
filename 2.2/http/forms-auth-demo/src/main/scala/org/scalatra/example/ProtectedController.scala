@@ -1,11 +1,16 @@
 package org.scalatra.example
 
 import org.scalatra._
-import scalate.ScalateSupport
+import org.slf4j.LoggerFactory
 
-class ProtectedController extends FormsAuthDemoStack {
+class ProtectedController extends FormsAuthDemoStack with AuthenticationSupport {
+
+  val logger = LoggerFactory.getLogger(getClass)
+
 
   get("/") {
+    logger.info("Hitting controller")
+    requireLogin
     <html>
       <body>
         <h1>Hello, world!</h1>
