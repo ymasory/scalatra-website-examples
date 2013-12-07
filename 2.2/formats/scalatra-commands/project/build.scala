@@ -9,8 +9,8 @@ object CommandBuild extends Build {
   val Organization = "com.example"
   val Name = "Scalatra Command Example"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.0"
-  val ScalatraVersion = "2.2.0"
+  val ScalaVersion = "2.10.1"
+  val ScalatraVersion = "2.2.2"
 
   lazy val project = Project (
     "command-example",

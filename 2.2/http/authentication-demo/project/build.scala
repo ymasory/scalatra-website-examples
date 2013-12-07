@@ -9,8 +9,8 @@ object AuthenticationDemoBuild extends Build {
   val Organization = "com.example"
   val Name = "Authentication Demo"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.0"
-  val ScalatraVersion = "2.2.1"
+  val ScalaVersion = "2.10.2"
+  val ScalatraVersion = "2.2.2"
 
   lazy val project = Project (
     "authentication-demo",

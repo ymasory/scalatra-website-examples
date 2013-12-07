@@ -9,8 +9,8 @@ object AtmosphereBuild extends Build {
   val Organization = "com.example"
   val Name = "Scalatra Atmosphere Example"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.1"
-  val ScalatraVersion = "2.2.1"
+  val ScalaVersion = "2.10.2"
+  val ScalatraVersion = "2.2.2"
 
   lazy val project = Project (
     "atmosphere-example",
