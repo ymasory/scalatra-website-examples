@@ -1,7 +1,7 @@
 package org.scalatra.example.data
 
 import com.mchange.v2.c3p0.ComboPooledDataSource
-import org.squeryl.adapters.MySQLAdapter
+import org.squeryl.adapters.{H2Adapter, MySQLAdapter}
 import org.squeryl.Session
 import org.squeryl.SessionFactory
 import org.slf4j.LoggerFactory
@@ -11,12 +11,12 @@ trait DatabaseInit {
 
   val databaseUsername = "root"
   val databasePassword = ""
-  val databaseConnection = "jdbc:mysql://localhost:3306/squeryltryout"
+  val databaseConnection = "jdbc:h2:mem:squeryltryout"
 
   var cpds = new ComboPooledDataSource
 
   def configureDb() {
-    cpds.setDriverClass("com.mysql.jdbc.Driver")
+    cpds.setDriverClass("org.h2.Driver")
     cpds.setJdbcUrl(databaseConnection)
     cpds.setUser(databaseUsername)
     cpds.setPassword(databasePassword)
@@ -29,7 +29,7 @@ trait DatabaseInit {
 
     def connection = {
       logger.info("Creating connection with c3po connection pool")
-      Session.create(cpds.getConnection, new MySQLAdapter)
+      Session.create(cpds.getConnection, new H2Adapter)
     }
   }
 
