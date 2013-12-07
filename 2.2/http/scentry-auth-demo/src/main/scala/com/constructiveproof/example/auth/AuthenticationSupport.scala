@@ -25,12 +25,20 @@ trait AuthenticationSupport extends ScalatraBase with ScentrySupport[User] {
     }
   }
 
+  /**
+   * If an unauthenticated user attempts to access a route which is protected by Scentry,
+   * run the unauthenticated() method on the UserPasswordStrategy.
+   */
   override protected def configureScentry = {
     scentry.unauthenticated {
       scentry.strategies("UserPassword").unauthenticated()
     }
   }
 
+  /**
+   * Register auth strategies with Scentry. Any controller with this trait mixed in will attempt to
+   * progressively use all registered strategies to log the user in, falling back if necessary.
+   */
   override protected def registerAuthStrategies = {
     scentry.register("UserPassword", app => new UserPasswordStrategy(app))
     scentry.register("RememberMe", app => new RememberMeStrategy(app))
