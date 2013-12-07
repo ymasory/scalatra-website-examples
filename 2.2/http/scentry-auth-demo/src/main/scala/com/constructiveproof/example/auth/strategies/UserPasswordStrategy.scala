@@ -27,7 +27,7 @@ class UserPasswordStrategy(protected val app: ScalatraBase)(implicit request: Ht
 
   /**
    *  In real life, this is where we'd consult our data store, asking it whether the user credentials matched
-   *  any existing user. Here, we'll just check for a know login/password combination and return a user if
+   *  any existing user. Here, we'll just check for a known login/password combination and return a user if
    *  it's found.
    */
   def authenticate()(implicit request: HttpServletRequest, response: HttpServletResponse): Option[User] = {
