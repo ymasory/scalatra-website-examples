@@ -1,4 +1,4 @@
-# akka-dispatch-example #
+# akka-examples #
 
 Corresponds to the guide at [http://scalatra.org/2.2/guides/async/akka.html](http://scalatra.org/2.2/guides/async/akka.html)
 
@@ -6,7 +6,7 @@ Corresponds to the guide at [http://scalatra.org/2.2/guides/async/akka.html](htt
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.2/async/akka-dispatch-example
+$ cd scalatra-website-examples/2.2/async/akka-examples
 $ chmod +x sbt
 $ ./sbt
 > container:start
