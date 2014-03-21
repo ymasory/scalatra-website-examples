@@ -4,18 +4,20 @@ import org.scalatra.sbt._
 import org.scalatra.sbt.PluginKeys._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
+import com.typesafe.sbt.SbtStartScript
 
 object AtmosphereBuild extends Build {
   val Organization = "com.example"
-  val Name = "Scalatra Atmosphere Example"
+  val Name = "Scalatra Atmosphere Embedded"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.2"
-  val ScalatraVersion = "2.2.2"
+  val ScalaVersion = "2.10.3"
+  val ScalatraVersion = "2.3.0-SNAPSHOT"
+  val jettyVersion = "9.1.3.v20140225"
 
   lazy val project = Project (
     "atmosphere-example",
     file("."),
-    settings =  Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+    settings = SbtStartScript.startScriptForClassesSettings ++ Defaults.defaultSettings ++  scalateSettings ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,
@@ -28,10 +30,11 @@ object AtmosphereBuild extends Build {
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
         "org.scalatra" %% "scalatra-atmosphere" % ScalatraVersion,
-        "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-        "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
-        "org.eclipse.jetty" % "jetty-websocket" % "8.1.8.v20121106" % "container;provided",
-        "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+        "ch.qos.logback"              %  "logback-classic"     % "1.1.1"          % "runtime",
+        "org.eclipse.jetty"           %  "jetty-plus"          % jettyVersion     % "runtime;provided",
+        "org.eclipse.jetty"           %  "jetty-webapp"        % jettyVersion     % "runtime",
+        "org.eclipse.jetty.websocket"  %  "websocket-server"        % "9.1.3.v20140225"     % "runtime;provided",
+        "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"          % "runtime;compile;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(
