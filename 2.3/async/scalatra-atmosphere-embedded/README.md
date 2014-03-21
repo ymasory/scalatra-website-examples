@@ -6,11 +6,9 @@ Corresponds to the guide at [http://scalatra.org/2.2/guides/async/atmosphere.htm
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.2/async/scalatra-atmosphere-example
+$ cd scalatra-website-examples/2.3/async/scalatra-atmosphere-embedded
 $ chmod +x sbt
-$ ./sbt
-> container:start
-> browse
+$ ./sbt run
 ```
 
 If `browse` doesn't launch your browser, manually open [http://localhost:8080/](http://localhost:8080/) in your browser.
