@@ -4,12 +4,12 @@ import org.scalatra.sbt._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
 
-object AtmosphereBuild extends Build {
+object build extends Build {
   val Organization = "com.example"
   val Name = "Scalatra Atmosphere Example"
   val Version = "0.2.0-SNAPSHOT"
   val ScalaVersion = "2.10.3"
-  val ScalatraVersion = "2.3.0-SNAPSHOT"
+  val ScalatraVersion = "2.3.0.RC1"
   val json4sversion = "3.2.7"
   val jettyVersion = "9.1.3.v20140225"
 
@@ -33,7 +33,7 @@ object AtmosphereBuild extends Build {
         "org.eclipse.jetty"           %  "jetty-plus"          % jettyVersion     % "container;provided",
         "org.eclipse.jetty"           %  "jetty-webapp"        % jettyVersion     % "container",
         "org.eclipse.jetty.websocket" %  "websocket-server"    % jettyVersion     % "container;provided",
-        "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"          % "container;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
+        "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"          % "container;provided;test"
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(
