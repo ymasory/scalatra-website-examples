@@ -1,21 +1,22 @@
 import sbt._
 import Keys._
 import org.scalatra.sbt._
-import org.scalatra.sbt.PluginKeys._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
 
 object AtmosphereBuild extends Build {
   val Organization = "com.example"
   val Name = "Scalatra Atmosphere Example"
-  val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.2"
-  val ScalatraVersion = "2.2.2"
+  val Version = "0.2.0-SNAPSHOT"
+  val ScalaVersion = "2.10.3"
+  val ScalatraVersion = "2.3.0-SNAPSHOT"
+  val json4sversion = "3.2.7"
+  val jettyVersion = "9.1.3.v20140225"
 
   lazy val project = Project (
     "atmosphere-example",
     file("."),
-    settings =  Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+    settings =  Defaults.defaultSettings ++ ScalatraPlugin.scalatraFullSettings ++ scalateSettings ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,
@@ -23,15 +24,16 @@ object AtmosphereBuild extends Build {
       resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
       resolvers += "Akka Repo" at "http://repo.akka.io/repository",
       libraryDependencies ++= Seq(
-        "org.json4s"   %% "json4s-jackson" % "3.1.0",
-        "org.scalatra" %% "scalatra" % ScalatraVersion,
-        "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
-        "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
-        "org.scalatra" %% "scalatra-atmosphere" % ScalatraVersion,
-        "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-        "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
-        "org.eclipse.jetty" % "jetty-websocket" % "8.1.8.v20121106" % "container;provided",
-        "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+        "org.json4s"                  %% "json4s-jackson"      % json4sversion,
+        "org.scalatra"                %% "scalatra"            % ScalatraVersion,
+        "org.scalatra"                %% "scalatra-scalate"    % ScalatraVersion,
+        "org.scalatra"                %% "scalatra-specs2"     % ScalatraVersion  % "test",
+        "org.scalatra"                %% "scalatra-atmosphere" % ScalatraVersion,
+        "ch.qos.logback"              %  "logback-classic"     % "1.1.1"          % "runtime",
+        "org.eclipse.jetty"           %  "jetty-plus"          % jettyVersion     % "container;provided",
+        "org.eclipse.jetty"           %  "jetty-webapp"        % jettyVersion     % "container",
+        "org.eclipse.jetty.websocket" %  "websocket-server"    % jettyVersion     % "container;provided",
+        "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"          % "container;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(
