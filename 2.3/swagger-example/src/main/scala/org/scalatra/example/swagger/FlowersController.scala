@@ -1,13 +1,21 @@
 package org.scalatra.example.swagger
 
-import org.json4s.DefaultFormats
 import org.scalatra._
-import org.scalatra.json._
+
+// Swagger-specific Scalatra imports
 import org.scalatra.swagger._
 
-class FlowersController()(implicit val swagger: Swagger) extends ScalatraServlet with JacksonJsonSupport with SwaggerSupport  {
+// JSON-related libraries
+import org.json4s.{DefaultFormats, Formats}
 
-  override protected implicit val jsonFormats = DefaultFormats
+// JSON handling support from Scalatra
+import org.scalatra.json._
+
+class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet with NativeJsonSupport with SwaggerSupport  {
+
+  // Sets up automatic case class to JSON output serialization, required by
+  // the JValueResult trait.
+  protected implicit val jsonFormats: Formats = DefaultFormats
 
   // A description of our application. This will show up in the Swagger docs.
   protected val applicationDescription = "The flowershop API. It exposes operations for browsing and searching lists of flowers"
@@ -17,12 +25,24 @@ class FlowersController()(implicit val swagger: Swagger) extends ScalatraServlet
     contentType = formats("json")
   }
 
+  // An API description about retrieving flowers.
   val getFlowers =
     (apiOperation[List[Flower]]("getFlowers")
-      summary "Retrieve a list of flowers"
+      summary "Show all flowers"
       notes "Shows all the flowers in the flower shop. You can search it too."
       parameter queryParam[Option[String]]("name").description("A name to search for"))
 
+  // An API description about finding flowers using a slug.
+  val findBySlug =
+    (apiOperation[Flower]("findBySlug")
+      summary "Find by slug"
+      parameters (
+      pathParam[String]("slug").description("Slug of flower that needs to be fetched")))
+
+
+  /**
+   * Retrieve a list of flowers
+   */
   get("/", operation(getFlowers)){
     params.get("name") match {
       case Some(name) => FlowerData.all filter (_.name.toLowerCase contains name.toLowerCase())
@@ -30,13 +50,9 @@ class FlowersController()(implicit val swagger: Swagger) extends ScalatraServlet
     }
   }
 
-
-  val findBySlug =
-    (apiOperation[Flower]("findBySlug")
-      summary "Find a flower using its slug."
-      parameters (
-      pathParam[String]("slug").description("Slug of flower that needs to be fetched")))
-
+  /**
+   * Find a flower using its slug.
+   */
   get("/:slug", operation(findBySlug)) {
     FlowerData.all find (_.slug == params("slug")) match {
       case Some(b) => b

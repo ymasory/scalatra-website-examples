@@ -9,7 +9,7 @@ object FlowershopBuild extends Build {
   val Organization = "com.example"
   val Name = "Flowershop"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.11.1"
+  val ScalaVersion = "2.10.4"
   val ScalatraVersion = "2.3.0"
 
   lazy val project = Project (
@@ -22,14 +22,15 @@ object FlowershopBuild extends Build {
       scalaVersion := ScalaVersion,
       resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
       libraryDependencies ++= Seq(
-        "org.json4s" %% "json4s-jackson" % "3.2.9",
+        "org.json4s"   %% "json4s-native" % "3.2.10",
         "org.scalatra" %% "scalatra-swagger"  % ScalatraVersion,
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
-        "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-        "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
-        "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+        "ch.qos.logback" % "logback-classic" % "1.1.2" % "runtime",
+        "org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "container",
+        "org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "container",
+        "javax.servlet" % "javax.servlet-api" % "3.1.0" % "container;provided;test" 
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(
