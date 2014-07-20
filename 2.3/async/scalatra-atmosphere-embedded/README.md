@@ -12,3 +12,9 @@ $ ./sbt run
 ```
 
 If `browse` doesn't launch your browser, manually open [http://localhost:8080/](http://localhost:8080/) in your browser.
+
+You can build an embedded Atmosphere-enabled app which runs under Jetty, by
+calling the `stage` task once you're in SBT. This will package a start script
+for you - it can be run by calling `target/start` from the top-level project
+directory.
+
