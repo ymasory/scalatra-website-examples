@@ -5,8 +5,8 @@ import akka.actor.{Props, ActorSystem}
 
 // For more on Specs2, see http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
 class MyActorAppSpec extends ScalatraSpec { def is =
-  "GET /async on MyActorApp"                     ^
-    "should return status 200"                  ! async200^
+  "GET /ask on MyActorApp"                     ^
+    "should return status 200"                  ! ask200^
                                                 end
 
 
@@ -15,7 +15,8 @@ class MyActorAppSpec extends ScalatraSpec { def is =
 
   addServlet(new MyActorApp(system, myActor), "/*")
 
-  def async200 = get("/async") {
+  def ask200 = get("/ask") {
     status must_== 200
   }
+
 }
