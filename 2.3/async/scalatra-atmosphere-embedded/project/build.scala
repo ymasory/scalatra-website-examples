@@ -8,8 +8,8 @@ object build extends Build {
   val Organization = "com.example"
   val Name = "Scalatra Atmosphere Embedded"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.3"
-  val ScalatraVersion = "2.3.0.RC1"
+  val ScalaVersion = "2.11.1"
+  val ScalatraVersion = "2.3.0"
   val jettyVersion = "9.1.3.v20140225"
 
   lazy val project = Project (
@@ -23,7 +23,7 @@ object build extends Build {
       resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
       resolvers += "Akka Repo" at "http://repo.akka.io/repository",
       libraryDependencies ++= Seq(
-        "org.json4s"                  %% "json4s-jackson"      % "3.1.0",
+        "org.json4s"                  %% "json4s-jackson"      % "3.2.9",
         "org.scalatra"                %% "scalatra"            % ScalatraVersion,
         "org.scalatra"                %% "scalatra-scalate"    % ScalatraVersion,
         "org.scalatra"                %% "scalatra-specs2"     % ScalatraVersion   % "test",
