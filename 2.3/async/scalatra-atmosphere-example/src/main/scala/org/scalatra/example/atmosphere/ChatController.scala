@@ -10,7 +10,6 @@ import org.scalatra.json.{JValueResult, JacksonJsonSupport}
 import org.scalatra.scalate.ScalateSupport
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent._
 
 class ChatController extends ScalatraServlet 
   with ScalateSupport with JValueResult 
