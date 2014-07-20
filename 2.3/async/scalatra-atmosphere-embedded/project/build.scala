@@ -13,7 +13,7 @@ object build extends Build {
   val jettyVersion = "9.1.3.v20140225"
 
   lazy val project = Project (
-    "atmosphere-example",
+    "atmosphere-embedded",
     file("."),
     settings = SbtStartScript.startScriptForClassesSettings ++ Defaults.defaultSettings ++  scalateSettings ++ Seq(
       organization := Organization,
