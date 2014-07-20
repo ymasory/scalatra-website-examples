@@ -10,8 +10,8 @@ object HerokuExampleBuild extends Build {
   val Organization = "org.scalatra"
   val Name = "Heroku Example"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.3"
-  val ScalatraVersion = "2.3.0-SNAPSHOT"
+  val ScalaVersion = "2.11.1"
+  val ScalatraVersion = "2.3.0"
   val jettyVersion = "9.1.3.v20140225"
 
 
