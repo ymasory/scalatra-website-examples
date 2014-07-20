@@ -9,7 +9,7 @@ object FlowershopBuild extends Build {
   val Organization = "com.example"
   val Name = "Flowershop"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.4"
+  val ScalaVersion = "2.11.1"
   val ScalatraVersion = "2.3.0"
 
   lazy val project = Project (
@@ -22,7 +22,7 @@ object FlowershopBuild extends Build {
       scalaVersion := ScalaVersion,
       resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
       libraryDependencies ++= Seq(
-        "org.json4s"   %% "json4s-native" % "3.2.10",
+        "org.json4s"   %% "json4s-native" % "3.2.9",
         "org.scalatra" %% "scalatra-swagger"  % ScalatraVersion,
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
