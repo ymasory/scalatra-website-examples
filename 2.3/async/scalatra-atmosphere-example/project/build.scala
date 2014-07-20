@@ -21,8 +21,6 @@ object build extends Build {
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
-      resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
-      resolvers += "Akka Repo" at "http://repo.akka.io/repository",
       libraryDependencies ++= Seq(
         "org.json4s"                  %% "json4s-jackson"      % json4sversion,
         "org.scalatra"                %% "scalatra"            % ScalatraVersion,
