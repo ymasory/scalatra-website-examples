@@ -23,8 +23,8 @@ object ScalatraCasbahExampleBuild extends Build {
       resolvers += Classpaths.typesafeReleases,
       libraryDependencies ++= Seq(
         "org.mongodb" %% "casbah" % "2.7.2",
-        "org.scalatra" %% "scalatra-json" % ScalatraVersion,
         "org.json4s" %% "json4s-jackson" % "3.2.10",
+        "org.scalatra" %% "scalatra-json" % ScalatraVersion,
         "org.json4s" %% "json4s-mongo" % "3.2.10",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
