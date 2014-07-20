@@ -1,13 +1,10 @@
 package org.scalatra.example.swagger
 
-import org.scalatra.swagger.{NativeSwaggerBase, Swagger, ApiInfo}
-
 import org.scalatra.ScalatraServlet
-import org.json4s.{DefaultFormats, Formats}
+import org.scalatra.swagger.{ApiInfo, NativeSwaggerBase, Swagger}
 
 
-class ResourcesApp(implicit val swagger: Swagger) extends ScalatraServlet with NativeSwaggerBase {
-}
+class ResourcesApp(implicit val swagger: Swagger) extends ScalatraServlet with NativeSwaggerBase
 
 object FlowersApiInfo extends ApiInfo(
     "The Flowershop API",
@@ -16,4 +13,5 @@ object FlowersApiInfo extends ApiInfo(
     "apiteam@scalatra.org",
     "MIT",
     "http://opensource.org/licenses/MIT")
-class FlowersSwagger extends Swagger(Swagger.SpecVersion, "1", FlowersApiInfo)
+
+class FlowersSwagger extends Swagger(Swagger.SpecVersion, "1.0.0", FlowersApiInfo)

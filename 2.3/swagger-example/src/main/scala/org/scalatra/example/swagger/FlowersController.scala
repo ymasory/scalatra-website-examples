@@ -25,24 +25,12 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
     contentType = formats("json")
   }
 
-  // An API description about retrieving flowers.
   val getFlowers =
     (apiOperation[List[Flower]]("getFlowers")
       summary "Show all flowers"
       notes "Shows all the flowers in the flower shop. You can search it too."
       parameter queryParam[Option[String]]("name").description("A name to search for"))
 
-  // An API description about finding flowers using a slug.
-  val findBySlug =
-    (apiOperation[Flower]("findBySlug")
-      summary "Find by slug"
-      parameters (
-      pathParam[String]("slug").description("Slug of flower that needs to be fetched")))
-
-
-  /**
-   * Retrieve a list of flowers
-   */
   get("/", operation(getFlowers)){
     params.get("name") match {
       case Some(name) => FlowerData.all filter (_.name.toLowerCase contains name.toLowerCase())
@@ -50,9 +38,13 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
     }
   }
 
-  /**
-   * Find a flower using its slug.
-   */
+
+  val findBySlug =
+    (apiOperation[Flower]("findBySlug")
+      summary "Find by a flower by its slug"
+      parameters (
+      pathParam[String]("slug").description("Slug of flower that needs to be fetched")))
+
   get("/:slug", operation(findBySlug)) {
     FlowerData.all find (_.slug == params("slug")) match {
       case Some(b) => b
@@ -62,7 +54,7 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
 }
 
 
-// A Flower object to use as a faked-out data model
+// A Flower object to use as a data model
 case class Flower(slug: String, name: String)
 
 // An amazing datastore!
