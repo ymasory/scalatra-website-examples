@@ -9,8 +9,8 @@ object ScalatraGzipBuild extends Build {
   val Organization = "com.example"
   val Name = "Scalatra Gzip"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.3"
-  val ScalatraVersion = "2.3.0-SNAPSHOT"
+  val ScalaVersion = "2.11.1"
+  val ScalatraVersion = "2.3.0"
   val jettyVersion = "9.1.3.v20140225"
 
   lazy val project = Project (
@@ -21,7 +21,6 @@ object ScalatraGzipBuild extends Build {
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
-      resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
       libraryDependencies ++= Seq(
         "org.scalatra"                %% "scalatra"            % ScalatraVersion,
         "org.scalatra"                %% "scalatra-scalate"    % ScalatraVersion,
