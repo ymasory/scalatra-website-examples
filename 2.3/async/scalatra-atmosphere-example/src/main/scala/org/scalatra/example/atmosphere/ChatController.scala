@@ -1,15 +1,16 @@
 package org.scalatra.example.atmosphere
 
-import org.scalatra._
-import scalate.ScalateSupport
-import org.scalatra.atmosphere._
-import org.scalatra.json.{JValueResult, JacksonJsonSupport}
-import org.json4s._
-import JsonDSL._
 import java.util.Date
 
+import org.json4s.JsonDSL._
+import org.json4s._
+import org.scalatra._
+import org.scalatra.atmosphere._
+import org.scalatra.json.{JValueResult, JacksonJsonSupport}
+import org.scalatra.scalate.ScalateSupport
+
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
-import ExecutionContext.Implicits.global
 
 class ChatController extends ScalatraServlet 
   with ScalateSupport with JValueResult 
