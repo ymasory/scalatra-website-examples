@@ -33,7 +33,7 @@ class TodosStringValidations(b: FieldDescriptor[String]) {
 abstract class TodosCommand[S](implicit mf: Manifest[S]) extends ModelCommand[S] with JsonCommand {
   
   /**
-   * Pimp the [org.scalatra.commands.FieldDescriptor] class with our [TodosStringValidations]
+   * Decorate the [org.scalatra.commands.FieldDescriptor] class with our [TodosStringValidations]
    * 
    * This adds the validation to the binding for the FieldDescriptor's b.validateWith function.
    */
