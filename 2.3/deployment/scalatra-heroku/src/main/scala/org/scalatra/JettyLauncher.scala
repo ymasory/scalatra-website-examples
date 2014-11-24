@@ -1,6 +1,7 @@
 import org.eclipse.jetty.server.Server
 import org.eclipse.jetty.servlet.{ DefaultServlet, ServletContextHandler }
 import org.eclipse.jetty.webapp.WebAppContext
+import org.scalatra.servlet.ScalatraListener
 
 object JettyLauncher {
   def main(args: Array[String]) {
@@ -8,10 +9,13 @@ object JettyLauncher {
 
     val server = new Server(port)
     val context = new WebAppContext()
-    context setContextPath "/"
+    context.setContextPath("/")
     context.setResourceBase("src/main/webapp")
+    
     context.addServlet(classOf[org.scalatra.example.HerokuApp], "/*")
     context.addServlet(classOf[DefaultServlet], "/")
+
+    context.setEventListeners(Array(new ScalatraListener))
 
     server.setHandler(context)
 

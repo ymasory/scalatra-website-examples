@@ -12,27 +12,24 @@ object HerokuExampleBuild extends Build {
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.1"
   val ScalatraVersion = "2.3.0"
-  val jettyVersion = "9.1.3.v20140225"
-
 
   lazy val project = Project (
     "heroku-example",
     file("."),
-    settings = SbtStartScript.startScriptForClassesSettings ++ Defaults.defaultSettings ++  scalateSettings ++ Seq(
+    settings = SbtStartScript.startScriptForClassesSettings ++ Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
-      resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
+      resolvers += Classpaths.typesafeReleases,
       libraryDependencies ++= Seq(
-        "com.basho.riak" % "riak-client" % "1.1.0",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
-        "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
-        "ch.qos.logback"              %  "logback-classic"     % "1.1.1"          % "runtime",
-        "org.eclipse.jetty"           %  "jetty-plus"          % jettyVersion     % "runtime;provided",
-        "org.eclipse.jetty"           %  "jetty-webapp"        % jettyVersion     % "runtime",
-        "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"          % "runtime;compile;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
+        "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
+        "ch.qos.logback" % "logback-classic" % "1.1.2" % "runtime",
+        "org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "container;runtime;provided",
+        "org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "container;runtime",
+        "javax.servlet" % "javax.servlet-api" % "3.1.0" % "runtime;compile;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(
@@ -49,6 +46,3 @@ object HerokuExampleBuild extends Build {
     )
   )
 }
-
-
-
