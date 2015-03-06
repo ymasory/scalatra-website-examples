@@ -9,28 +9,27 @@ object ScalatraSlickBuild extends Build {
   val Organization = "com.example"
   val Name = "Scalatra Slick"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.4" // Would be nice to go to Scala 2.11 when we have time to look at Slick 2.x
-  val ScalatraVersion = "2.3.0"
+  val ScalaVersion = "2.11.5"
+  val ScalatraVersion = "2.4.0.M2"
 
   lazy val project = Project (
     "scalatra-slick",
     file("."),
-    settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+    settings = Defaults.defaultConfigs ++ ScalatraPlugin.scalatraSettings ++ scalateSettings ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
-      resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
       libraryDependencies ++= Seq(
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
         "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-        "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
-        "com.typesafe.slick" %% "slick" % "1.0.1",
-        "com.h2database" % "h2" % "1.3.166",
-        "c3p0" % "c3p0" % "0.9.1.2",
-        "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+        "com.typesafe.slick" %% "slick" % "3.0.0-RC1",
+        "com.h2database" % "h2" % "1.4.181",
+        "com.mchange" % "c3p0" % "0.9.2",
+        "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
+        "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container"
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(
