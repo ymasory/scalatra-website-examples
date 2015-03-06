@@ -1,9 +1,9 @@
 import com.mchange.v2.c3p0.ComboPooledDataSource
 import org.slf4j.LoggerFactory
-import scala.slick.session.Database
-import slicksupport._
+import slickexample._
 import org.scalatra._
 import javax.servlet.ServletContext
+import slick.driver.JdbcDriver.api._
 
 /**
  * This is the ScalatraBootstrap bootstrap file. You can use it to mount servlets or
