@@ -4,7 +4,7 @@ import org.scalatra.sbt._
 import org.scalatra.sbt.PluginKeys._
 import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
-import com.typesafe.sbt.SbtStartScript
+import com.typesafe.sbt.packager.archetypes.JavaAppPackaging
 
 object HerokuExampleBuild extends Build {
   val Organization = "org.scalatra"
@@ -18,7 +18,7 @@ object HerokuExampleBuild extends Build {
   lazy val project = Project (
     "heroku-example",
     file("."),
-    settings = SbtStartScript.startScriptForClassesSettings ++ Defaults.defaultSettings ++  scalateSettings ++ Seq(
+    settings = Defaults.defaultSettings ++  scalateSettings ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,
@@ -30,8 +30,8 @@ object HerokuExampleBuild extends Build {
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
         "ch.qos.logback"              %  "logback-classic"     % "1.1.1"          % "runtime",
-        "org.eclipse.jetty"           %  "jetty-plus"          % jettyVersion     % "runtime;provided",
-        "org.eclipse.jetty"           %  "jetty-webapp"        % jettyVersion     % "runtime",
+        "org.eclipse.jetty"           %  "jetty-plus"          % jettyVersion     % "runtime;provided;compile",
+        "org.eclipse.jetty"           %  "jetty-webapp"        % jettyVersion     % "runtime;compile",
         "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"          % "runtime;compile;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
@@ -47,8 +47,5 @@ object HerokuExampleBuild extends Build {
         )
       }
     )
-  )
+  ).enablePlugins(JavaAppPackaging)
 }
-
-
-
