@@ -6,7 +6,7 @@ import org.scalatest.{ FunSuite, BeforeAndAfter }
 import org.scalatra.example.models.BlogDb
 import org.h2.engine.Session
 
-class ArticlesControllerTest extends FunSuite with ScalatraSuite with DatabaseInit with BeforeAndAfter {
+class ArticlesControllerSpec extends FunSuite with ScalatraSuite with DatabaseInit with BeforeAndAfter {
   addServlet(classOf[ArticlesController], "/*")
   
   before {
