@@ -9,8 +9,8 @@ object ScalatraSquerylBuild extends Build {
   val Organization = "org.scalatra.example"
   val Name = "Scalatra Squeryl"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.11.1"
-  val ScalatraVersion = "2.3.0"
+  val ScalaVersion = "2.11.6"
+  val ScalatraVersion = "2.4.0.RC1"
 
   lazy val project = Project (
     "scalatra-squeryl",
@@ -20,24 +20,28 @@ object ScalatraSquerylBuild extends Build {
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
-      resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
+      resolvers += Classpaths.typesafeReleases,
+      resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
-        "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-        "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
         "org.squeryl" %% "squeryl" % "0.9.5-7",
         "com.h2database" % "h2" % "1.3.166",
         "c3p0" % "c3p0" % "0.9.1.2",
-        "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+        "ch.qos.logback" % "logback-classic" % "1.1.2" % "runtime",
+        "org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "container",
+        "org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "container",
+        "javax.servlet" % "javax.servlet-api" % "3.1.0"
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(
           TemplateConfig(
             base / "webapp" / "WEB-INF" / "templates",
             Seq.empty,  /* default imports should be added here */
-            Seq.empty,  /* add extra bindings here */
+            Seq(
+              Binding("context", "_root_.org.scalatra.scalate.ScalatraRenderContext", importMembers = true, isImplicit = true)
+            ),  /* add extra bindings here */
             Some("templates")
           )
         )
