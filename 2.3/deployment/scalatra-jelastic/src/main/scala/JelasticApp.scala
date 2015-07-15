@@ -8,7 +8,7 @@ class JelasticApp extends ScalatraServlet {
     <html>
       <body>
         <h1>This is
-          <a href="http://scalatra.org/2.2/guides/deployment/jelastic.html">
+          <a href="http://scalatra.org/2.3/guides/deployment/jelastic.html">
             scalatra-jelastic
           </a>!
         </h1>
