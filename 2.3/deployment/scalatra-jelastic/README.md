@@ -1,12 +1,12 @@
 # scalatra-jelastic #
 
-Corresponds to the guide at [http://scalatra.org/2.2/guides/deployment/jelastic.html](http://scalatra.org/2.2/guides/deployment/jelastic.html).
+Corresponds to the guide at [http://scalatra.org/2.3/guides/deployment/jelastic.html](http://scalatra.org/2.3/guides/deployment/jelastic.html).
 
 ## Build & Run ##
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.2/deployment/scalatra-jelastic
+$ cd scalatra-website-examples/2.3/deployment/scalatra-jelastic
 $ chmod +x sbt
 $ ./sbt
 > container:start

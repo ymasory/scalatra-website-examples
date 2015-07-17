@@ -1,6 +1,6 @@
 # Scalatra Atmosphere Example #
 
-Corresponds to the guide at [http://scalatra.org/2.2/guides/async/atmosphere.html](http://scalatra.org/2.2/guides/async/atmosphere.html)
+Corresponds to the guide at [http://scalatra.org/2.3/guides/async/atmosphere.html](http://scalatra.org/2.3/guides/async/atmosphere.html)
 
 ## Build & Run ##
 

@@ -1,12 +1,12 @@
 # scalatra-http-client #
 
-Corresponds to the guide at [http://scalatra.org/2.2/guides/http/http-client.html](http://scalatra.org/2.2/guides/http/http-client.html).
+Corresponds to the guide at [http://scalatra.org/2.3/guides/http/http-client.html](http://scalatra.org/2.3/guides/http/http-client.html).
 
 ## Build & Run ##
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.2/http/scalatra-http-client
+$ cd scalatra-website-examples/2.3/http/scalatra-http-client
 $ chmod +x sbt
 $ ./sbt
 > container:start

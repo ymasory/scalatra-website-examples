@@ -1,12 +1,12 @@
 # Scalatra Atmosphere Example #
 
-Corresponds to the guide at [http://scalatra.org/2.2/guides/async/atmosphere.html](http://scalatra.org/2.2/guides/async/atmosphere.html)
+Corresponds to the guide at [http://scalatra.org/2.4/guides/async/atmosphere.html](http://scalatra.org/2.4/guides/async/atmosphere.html)
 
 ## Build & Run ##
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.3/async/scalatra-atmosphere-embedded
+$ cd scalatra-website-examples/2.4/async/scalatra-atmosphere-embedded
 $ chmod +x sbt
 $ ./sbt run
 ```
