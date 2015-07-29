@@ -10,8 +10,8 @@ object build extends Build {
   val Version = "0.2.0-SNAPSHOT"
   val ScalaVersion = "2.11.1"
   val ScalatraVersion = "[2.4,)"
-  val json4sversion = "3.2.9"
   val jettyVersion = "9.1.3.v20140225"
+  val JacksonVersion = "3.2.11"
 
   lazy val project = Project (
     "atmosphere-example",
@@ -23,7 +23,7 @@ object build extends Build {
       scalaVersion := ScalaVersion,
       resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
-        "org.json4s"                  %% "json4s-jackson"      % json4sversion,
+        "org.json4s"                  %% "json4s-jackson"      % JacksonVersion,
         "org.scalatra"                %% "scalatra"            % ScalatraVersion,
         "org.scalatra"                %% "scalatra-scalate"    % ScalatraVersion,
         "org.scalatra"                %% "scalatra-specs2"     % ScalatraVersion  % "test",
