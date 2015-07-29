@@ -21,6 +21,7 @@ object FlowershopBuild extends Build {
       version := Version,
       scalaVersion := ScalaVersion,
       resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "org.json4s"   %% "json4s-native" % "3.2.9",
         "org.scalatra" %% "scalatra-swagger"  % ScalatraVersion,

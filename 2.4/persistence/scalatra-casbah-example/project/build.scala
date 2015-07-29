@@ -21,6 +21,7 @@ object ScalatraCasbahExampleBuild extends Build {
       version := Version,
       scalaVersion := ScalaVersion,
       resolvers += Classpaths.typesafeReleases,
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "org.mongodb" %% "casbah" % "2.7.2",
         "org.json4s" %% "json4s-jackson" % "3.2.10",

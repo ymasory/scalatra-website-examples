@@ -21,6 +21,7 @@ object build extends Build {
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "org.json4s"                  %% "json4s-jackson"      % json4sversion,
         "org.scalatra"                %% "scalatra"            % ScalatraVersion,

@@ -20,6 +20,7 @@ object ScalatraHttpClientBuild extends Build {
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "net.databinder.dispatch" %% "dispatch-core" % "0.11.1",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
