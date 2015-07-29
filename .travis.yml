@@ -16,6 +16,10 @@ before_script:
   - curl -L -o $HOME/.sbt/launchers/0.13.0/sbt-launch.jar https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.0/sbt-launch.jar
   - curl -L -o $HOME/.sbt/launchers/0.13.5/sbt-launch.jar https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.5/sbt-launch.jar
 
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+
 env:
   - TEST_DIR=2.3/async/akka-examples
   - TEST_DIR=2.3/async/scalatra-atmosphere-embedded
