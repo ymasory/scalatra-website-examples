@@ -33,11 +33,9 @@ class TodosController extends ScalatraServlet with ScalateSupport
   }
 
   post("/todos") {
-    val cmd = command[CreateTodoCommand]
-    cmd >> .fold(
-      errors => halt(400, errors),
-      todo => redirect("/")
-    )
+    val todo = new Todo(-1, params("name"))
+    TodoData.add(TodoData.newTodo(params("name")))
+    redirect("/")
   }
 
   get("/todos/:id") {

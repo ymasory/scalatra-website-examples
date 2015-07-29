@@ -11,6 +11,7 @@ object CommandBuild extends Build {
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.1"
   val ScalatraVersion = "[2.4,)"
+  val JacksonVersion = "3.2.11"
 
   lazy val project = Project (
     "command-example",
@@ -21,7 +22,7 @@ object CommandBuild extends Build {
       version := Version,
       scalaVersion := ScalaVersion,
       libraryDependencies ++= Seq(
-        "org.json4s"   %% "json4s-jackson" % "3.2.9",
+        "org.json4s"   %% "json4s-jackson" % JacksonVersion,
         "org.scalatra" %% "scalatra-commands" % ScalatraVersion,
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
