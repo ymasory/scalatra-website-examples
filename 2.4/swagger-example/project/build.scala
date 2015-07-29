@@ -10,7 +10,7 @@ object FlowershopBuild extends Build {
   val Name = "Flowershop"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.1"
-  val ScalatraVersion = "2.3.0"
+  val ScalatraVersion = "[2.4,)"
 
   lazy val project = Project (
     "flowershop",

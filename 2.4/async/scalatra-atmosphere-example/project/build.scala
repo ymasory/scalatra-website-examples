@@ -9,7 +9,7 @@ object build extends Build {
   val Name = "Scalatra Atmosphere Example"
   val Version = "0.2.0-SNAPSHOT"
   val ScalaVersion = "2.11.1"
-  val ScalatraVersion = "2.3.0"
+  val ScalatraVersion = "[2.4,)"
   val json4sversion = "3.2.9"
   val jettyVersion = "9.1.3.v20140225"
 
