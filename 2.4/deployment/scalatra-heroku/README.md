@@ -5,7 +5,8 @@ Corresponds to the guide at [http://scalatra.org/2.4/guides/deployment/heroku.ht
 ## Build & Run ##
 
 ```sh
-$ git clone https://github.com/kissaten/scalatra-heroku.git
+$ git clone https://github.com/scalatra/scalatra-website-examples.git
+$ cd scalatra-website-examples/2.4/deployment/scalatra-heroku
 $ chmod +x sbt
 $ ./sbt stage
 $ ./target/universal/stage/bin/heroku-example
