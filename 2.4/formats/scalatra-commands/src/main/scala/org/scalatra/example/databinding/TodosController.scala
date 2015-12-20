@@ -32,6 +32,7 @@ class TodosController extends ScalatraServlet with ScalateSupport
     ssp("/todos/index", "todos" -> TodoData.all, "remaining" -> TodoData.remaining)
   }
 
+  /* TODO broken code
   post("/todos") {
     val cmd = command[CreateTodoCommand]
     cmd >> .fold(
@@ -39,6 +40,7 @@ class TodosController extends ScalatraServlet with ScalateSupport
       todo => redirect("/")
     )
   }
+  */
 
   get("/todos/:id") {
     TodoData.all find (_.id == params("id").toInt) match {
