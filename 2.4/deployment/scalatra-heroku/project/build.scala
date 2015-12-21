@@ -11,7 +11,7 @@ object HerokuExampleBuild extends Build {
   val Name = "Heroku Example"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.1"
-  val ScalatraVersion = "2.3.0"
+  val ScalatraVersion = "[2.4,)"
   val jettyVersion = "9.1.3.v20140225"
 
 

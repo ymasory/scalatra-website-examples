@@ -10,7 +10,7 @@ object ScalatraHttpClientBuild extends Build {
   val Name = "Scalatra HTTP Client"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.1"
-  val ScalatraVersion = "2.3.0"
+  val ScalatraVersion = "[2.4,)"
 
   lazy val project = Project (
     "scalatra-http-client",
@@ -20,6 +20,7 @@ object ScalatraHttpClientBuild extends Build {
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "net.databinder.dispatch" %% "dispatch-core" % "0.11.1",
         "org.scalatra" %% "scalatra" % ScalatraVersion,

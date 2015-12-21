@@ -10,7 +10,7 @@ object ScentryauthdemoBuild extends Build {
   val Name = "ScentryAuthDemo"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.1"
-  val ScalatraVersion = "2.3.0"
+  val ScalatraVersion = "[2.4,)"
   val jettyVersion = "9.1.3.v20140225"
 
   lazy val project = Project (
@@ -21,6 +21,7 @@ object ScentryauthdemoBuild extends Build {
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "org.scalatra"                %% "scalatra"            % ScalatraVersion,
         "org.scalatra"                %% "scalatra-scalate"    % ScalatraVersion,

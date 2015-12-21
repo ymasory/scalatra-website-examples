@@ -1,28 +1,26 @@
 language: scala
+
 jdk:
   - openjdk7
+
 services:
   - mongodb
+
+before_script:
+  - mkdir -p $HOME/.sbt/launchers/0.12.1
+  - mkdir -p $HOME/.sbt/launchers/0.12.2
+  - mkdir -p $HOME/.sbt/launchers/0.13.0
+  - mkdir -p $HOME/.sbt/launchers/0.13.5
+  - curl -L -o $HOME/.sbt/launchers/0.12.1/sbt-launch.jar https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.12.1/sbt-launch.jar
+  - curl -L -o $HOME/.sbt/launchers/0.12.2/sbt-launch.jar https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.12.2/sbt-launch.jar
+  - curl -L -o $HOME/.sbt/launchers/0.13.0/sbt-launch.jar https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.0/sbt-launch.jar
+  - curl -L -o $HOME/.sbt/launchers/0.13.5/sbt-launch.jar https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.5/sbt-launch.jar
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+
 env:
-  - TEST_DIR=2.2/async/akka-examples
-  - TEST_DIR=2.2/async/scalatra-atmosphere-example
-  - TEST_DIR=2.2/deployment/scalatra-cloudbees
-  - TEST_DIR=2.2/deployment/scalatra-heroku
-  - JELASTIC_USERNAME="you@you.com" JELASTIC_PWD="iluvyou" TEST_DIR=2.2/deployment/scalatra-jelastic
-  - TEST_DIR=2.2/formats/scalatra-commands
-  - TEST_DIR=2.2/http/authentication-demo
-  - TEST_DIR=2.2/http/scalatra-gzip
-  - TEST_DIR=2.2/http/scalatra-http-client
-  - TEST_DIR=2.2/http/scalatra-http-demo
-  - TEST_DIR=2.2/http/scentry-auth-demo
-  - TEST_DIR=2.2/persistence/riak-example
-  - TEST_DIR=2.2/persistence/scalatra-casbah-example
-  - TEST_DIR=2.2/persistence/scalatra-slick
-  - TEST_DIR=2.2/persistence/scalatra-squeryl
-  - TEST_DIR=2.2/resources/scalatra-coffeescript
-  - TEST_DIR=2.2/resources/scalatra-less-css
-  - TEST_DIR=2.2/swagger-example
-  - TEST_DIR=2.2/views/scalatra-twirl
   - TEST_DIR=2.3/async/akka-examples
   - TEST_DIR=2.3/async/scalatra-atmosphere-embedded
   - TEST_DIR=2.3/async/scalatra-atmosphere-example
@@ -41,4 +39,42 @@ env:
   - TEST_DIR=2.3/resources/scalatra-coffeescript
   - TEST_DIR=2.3/resources/scalatra-less-css
   - TEST_DIR=2.3/swagger-example
-script: cd $TEST_DIR && ./sbt test
+  - TEST_DIR=2.4/async/akka-examples
+  - TEST_DIR=2.4/async/scalatra-atmosphere-embedded
+  - TEST_DIR=2.4/async/scalatra-atmosphere-example
+  - TEST_DIR=2.4/deployment/scalatra-heroku
+  - JELASTIC_USERNAME="you@you.com" JELASTIC_PWD="iluvyou" TEST_DIR=2.4/deployment/scalatra-jelastic
+  - TEST_DIR=2.4/formats/scalatra-commands
+  - TEST_DIR=2.4/http/authentication-demo
+  - TEST_DIR=2.4/http/scalatra-gzip
+  - TEST_DIR=2.4/http/scalatra-http-client
+  - TEST_DIR=2.4/http/scalatra-http-demo
+  - TEST_DIR=2.4/http/scentry-auth-demo
+  - TEST_DIR=2.4/persistence/riak-example
+  - TEST_DIR=2.4/persistence/scalatra-casbah-example
+  - TEST_DIR=2.4/persistence/scalatra-slick
+  - TEST_DIR=2.4/persistence/scalatra-squeryl
+  - TEST_DIR=2.4/resources/scalatra-coffeescript
+  - TEST_DIR=2.4/resources/scalatra-less-css
+  - TEST_DIR=2.4/swagger-example
+  # - TEST_DIR=2.2/async/akka-examples
+  # - TEST_DIR=2.2/async/scalatra-atmosphere-example
+  # - TEST_DIR=2.2/deployment/scalatra-cloudbees
+  # - TEST_DIR=2.2/deployment/scalatra-heroku
+  # - JELASTIC_USERNAME="you@you.com" JELASTIC_PWD="iluvyou" TEST_DIR=2.2/deployment/scalatra-jelastic
+  # - TEST_DIR=2.2/formats/scalatra-commands
+  # - TEST_DIR=2.2/http/authentication-demo
+  # - TEST_DIR=2.2/http/scalatra-gzip
+  # - TEST_DIR=2.2/http/scalatra-http-client
+  # - TEST_DIR=2.2/http/scalatra-http-demo
+  # - TEST_DIR=2.2/http/scentry-auth-demo
+  # - TEST_DIR=2.2/persistence/riak-example
+  # - TEST_DIR=2.2/persistence/scalatra-casbah-example
+  # - TEST_DIR=2.2/persistence/scalatra-slick
+  # - TEST_DIR=2.2/persistence/scalatra-squeryl
+  # - TEST_DIR=2.2/resources/scalatra-coffeescript
+  # - TEST_DIR=2.2/resources/scalatra-less-css
+  # - TEST_DIR=2.2/swagger-example
+  # - TEST_DIR=2.2/views/scalatra-twirl
+
+script: cd $TEST_DIR && sbt test
