@@ -9,13 +9,13 @@ object ScalatraSquerylBuild extends Build {
   val Organization = "org.scalatra.example"
   val Name = "Scalatra Squeryl"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.11.6"
-  val ScalatraVersion = "2.4.0.RC1"
+  val ScalaVersion = "2.11.7"
+  val ScalatraVersion = "2.4.0"
 
   lazy val project = Project (
     "scalatra-squeryl",
     file("."),
-    settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+    settings = ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,
@@ -27,9 +27,9 @@ object ScalatraSquerylBuild extends Build {
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
         "org.squeryl" %% "squeryl" % "0.9.5-7",
-        "com.h2database" % "h2" % "1.3.166",
-        "c3p0" % "c3p0" % "0.9.1.2",
-        "ch.qos.logback" % "logback-classic" % "1.1.2" % "runtime",
+        "com.h2database" % "h2" % "1.4.190",
+        "com.mchange" % "c3p0" % "0.9.5.2",
+        "ch.qos.logback" % "logback-classic" % "1.1.3" % "runtime",
         "org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "container",
         "org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "container",
         "javax.servlet" % "javax.servlet-api" % "3.1.0"

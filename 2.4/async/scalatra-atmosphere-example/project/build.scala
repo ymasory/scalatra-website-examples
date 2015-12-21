@@ -8,26 +8,26 @@ object build extends Build {
   val Organization = "com.example"
   val Name = "Scalatra Atmosphere Example"
   val Version = "0.2.0-SNAPSHOT"
-  val ScalaVersion = "2.11.1"
-  val ScalatraVersion = "2.3.0"
-  val json4sversion = "3.2.9"
-  val jettyVersion = "9.1.3.v20140225"
+  val ScalaVersion = "2.11.7"
+  val ScalatraVersion = "2.4.+"
+  val jettyVersion = "9.1.5.v20140505"
 
   lazy val project = Project (
     "atmosphere-example",
     file("."),
-    settings =  Defaults.defaultSettings ++ ScalatraPlugin.scalatraFullSettings ++ scalateSettings ++ Seq(
+    settings = ScalatraPlugin.scalatraFullSettings ++ scalateSettings ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
-        "org.json4s"                  %% "json4s-jackson"      % json4sversion,
+        "org.json4s"                  %% "json4s-jackson"      % "3.3.0",
         "org.scalatra"                %% "scalatra"            % ScalatraVersion,
         "org.scalatra"                %% "scalatra-scalate"    % ScalatraVersion,
         "org.scalatra"                %% "scalatra-specs2"     % ScalatraVersion  % "test",
         "org.scalatra"                %% "scalatra-atmosphere" % ScalatraVersion,
-        "ch.qos.logback"              %  "logback-classic"     % "1.1.1"          % "runtime",
+        "ch.qos.logback"              %  "logback-classic"     % "1.1.3"          % "runtime",
         "org.eclipse.jetty"           %  "jetty-plus"          % jettyVersion     % "container;provided",
         "org.eclipse.jetty"           %  "jetty-webapp"        % jettyVersion     % "container",
         "org.eclipse.jetty.websocket" %  "websocket-server"    % jettyVersion     % "container;provided",

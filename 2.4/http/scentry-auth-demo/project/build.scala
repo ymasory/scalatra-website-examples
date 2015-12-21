@@ -9,24 +9,25 @@ object ScentryauthdemoBuild extends Build {
   val Organization = "com.constructiveproof"
   val Name = "ScentryAuthDemo"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.11.1"
-  val ScalatraVersion = "2.3.0"
-  val jettyVersion = "9.1.3.v20140225"
+  val ScalaVersion = "2.11.7"
+  val ScalatraVersion = "2.4.+"
+  val jettyVersion = "9.1.5.v20140505"
 
   lazy val project = Project (
     "scentryauthdemo",
     file("."),
-    settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+    settings = ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "org.scalatra"                %% "scalatra"            % ScalatraVersion,
         "org.scalatra"                %% "scalatra-scalate"    % ScalatraVersion,
         "org.scalatra"                %% "scalatra-auth"       % ScalatraVersion,
         "org.scalatra"                %% "scalatra-specs2"     % ScalatraVersion  % "test",
-        "ch.qos.logback"              %  "logback-classic"     % "1.1.1"          % "runtime",
+        "ch.qos.logback"              %  "logback-classic"     % "1.1.3"          % "runtime",
         "org.eclipse.jetty"           %  "jetty-plus"          % jettyVersion     % "container;provided",
         "org.eclipse.jetty"           %  "jetty-webapp"        % jettyVersion     % "container",
         "org.eclipse.jetty.websocket" %  "websocket-server"    % jettyVersion     % "container;provided",
