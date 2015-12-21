@@ -10,7 +10,7 @@ object RiakExampleBuild extends Build {
   val Name = "Riak Example"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.7"
-  val ScalatraVersion = "2.4.0"
+  val ScalatraVersion = "2.4.+"
 
   lazy val project = Project (
     "riak-example",

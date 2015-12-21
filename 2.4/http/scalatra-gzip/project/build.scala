@@ -10,7 +10,7 @@ object ScalatraGzipBuild extends Build {
   val Name = "Scalatra Gzip"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.7"
-  val ScalatraVersion = "2.4.0"
+  val ScalatraVersion = "2.4.+"
   val jettyVersion = "9.1.5.v20140505"
 
   lazy val project = Project (

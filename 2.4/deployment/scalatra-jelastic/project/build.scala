@@ -10,7 +10,7 @@ object JelasticAppBuild extends Build {
   val Name = "Scalatra Jelastic"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.7"
-  val ScalatraVersion = "2.4.0"
+  val ScalatraVersion = "2.4.+"
 
   lazy val project = Project (
     "scalatra-jelastic",
@@ -20,6 +20,7 @@ object JelasticAppBuild extends Build {
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,

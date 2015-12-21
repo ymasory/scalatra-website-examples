@@ -10,7 +10,7 @@ object AkkaExamplesBuild extends Build {
   val Name = "Akka Examples"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.7"
-  val ScalatraVersion = "2.4.0"
+  val ScalatraVersion = "2.4.+"
 
   lazy val project = Project (
     "akka-examples",
@@ -22,6 +22,7 @@ object AkkaExamplesBuild extends Build {
       scalaVersion := ScalaVersion,
       resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
       resolvers += "Akka Repo" at "http://repo.akka.io/repository",
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "com.typesafe.akka" %% "akka-actor" % "2.3.14",
         "net.databinder.dispatch" %% "dispatch-core" % "0.11.3",

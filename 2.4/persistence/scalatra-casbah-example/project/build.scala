@@ -10,7 +10,7 @@ object ScalatraCasbahExampleBuild extends Build {
   val Name = "Scalatra Casbah Example"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.11.7"
-  val ScalatraVersion = "2.4.0"
+  val ScalatraVersion = "2.4.+"
 
   lazy val project = Project (
     "scalatra-casbah-example",
@@ -21,6 +21,7 @@ object ScalatraCasbahExampleBuild extends Build {
       version := Version,
       scalaVersion := ScalaVersion,
       resolvers += Classpaths.typesafeReleases,
+      resolvers += "Scalaz Bintray" at "http://dl.bintray.com/scalaz/releases",
       libraryDependencies ++= Seq(
         "org.mongodb" %% "casbah" % "3.1.0",
         "org.json4s" %% "json4s-jackson" % "3.3.0",

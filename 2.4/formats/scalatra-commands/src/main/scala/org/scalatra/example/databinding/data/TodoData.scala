@@ -51,7 +51,7 @@ object TodoData extends Logging with CommandHandler {
   
   /** Instantiates a new `Todo` object with an auto-incremented primary key id. 
    */
-  private def newTodo(name: String) = Todo(idCounter.incrementAndGet, name)
+  def newTodo(name: String) = Todo(idCounter.incrementAndGet, name)
   
   /** Adds a new Todo object to the existing list of todos.
    * 
@@ -66,7 +66,7 @@ object TodoData extends Logging with CommandHandler {
    * will be called, due to the allCatch.withApply (which is equivalent to a
    * try {} catch {} block. 
    */
-  private def add(todo: Todo): ModelValidation[Todo] = {
+  def add(todo: Todo): ModelValidation[Todo] = {
     allCatch.withApply(errorFail) {
       all ::= todo
       all = all.sortWith((e1, e2) => (e1.id < e2.id))
