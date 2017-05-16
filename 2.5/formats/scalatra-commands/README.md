@@ -12,10 +12,10 @@ A full tutorial on the use of validation commands is available on the
 ## Build & Run ##
 
 ```sh
-$ cd 2.4/formats/scalatra-commands
+$ cd 2.5/formats/scalatra-commands
 $ chmod u+x sbt
 $ ./sbt
-> container:start
+> jetty:start
 > browse
 ```
 
