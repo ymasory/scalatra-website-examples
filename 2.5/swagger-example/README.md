@@ -1,7 +1,7 @@
 Scalatra Swagger Flowershop
 ===========================
 
-Corresponds to the guide at [http://scalatra.org/2.4/guides/swagger.html](http://scalatra.org/2.4/guides/swagger.html)
+Corresponds to the guide at [http://scalatra.org/2.5/guides/swagger.html](http://scalatra.org/2.5/guides/swagger.html)
 
 A sample API, including automatically generated, runnable API documentation,
 to demonstrate Scalatra's Swagger functionality.
@@ -10,10 +10,10 @@ to demonstrate Scalatra's Swagger functionality.
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.4/swagger-example
+$ cd scalatra-website-examples/2.5/swagger-example
 $ chmod +x sbt
 $ ./sbt
-> container:start
+> jetty:start
 ```
 
 Open your browser to http://petstore.swagger.wordnik.com/, and you'll see the default Swagger demo application - a Pet Store - and you'll be able to browse its documentation. 

@@ -15,4 +15,4 @@ object FlowersSwagger{
     "MIT",
     "http://opensource.org/licenses/MIT")
 }
-class FlowersSwagger extends Swagger(Swagger.SpecVersion, "1", FlowersSwagger.Info)
+class FlowersSwagger extends Swagger("2.0", "1", FlowersSwagger.Info)
