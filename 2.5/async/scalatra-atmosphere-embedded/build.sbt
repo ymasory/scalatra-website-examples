@@ -9,7 +9,7 @@ val ScalatraVersion = "2.5.+"
 val jettyVersion = "9.2.19.v20160908"
 
 libraryDependencies ++= Seq(
-  "org.json4s"                  %% "json4s-jackson"      % "3.3.0",
+  "org.json4s"                  %% "json4s-jackson"      % "3.5.0",
   "org.scalatra"                %% "scalatra"            % ScalatraVersion,
   "org.scalatra"                %% "scalatra-scalate"    % ScalatraVersion,
   "org.scalatra"                %% "scalatra-specs2"     % ScalatraVersion   % "test",
