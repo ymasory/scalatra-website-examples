@@ -5,7 +5,7 @@
 ```sh
 $ cd ScentryAuthDemo
 $ ./sbt
-> container:start
+> jetty:start
 > browse
 ```
 
