@@ -6,8 +6,6 @@ scalaVersion := "2.11.8"
 val ScalatraVersion = "2.5.+"
 
 libraryDependencies ++= Seq(
-  "org.scalatra"            %% "scalatra-auth"     % ScalatraVersion,
-  "org.scalatra"            %% "scalatra-commands" % ScalatraVersion,
   "org.scalatra"            %% "scalatra"          % ScalatraVersion,
   "org.scalatra"            %% "scalatra-scalate"  % ScalatraVersion,
   "org.scalatra"            %% "scalatra-specs2"   % ScalatraVersion    % "test",
