@@ -5,7 +5,7 @@
 ```sh
 $ cd Scalatra_Casbah_Example
 $ ./sbt
-> container:start
+> jetty:start
 > browse
 ```
 
