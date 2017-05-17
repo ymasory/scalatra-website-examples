@@ -5,7 +5,7 @@
 ```sh
 $ cd Riak_Example
 $ ./sbt
-> container:start
+> jetty:start
 > browse
 ```
 
