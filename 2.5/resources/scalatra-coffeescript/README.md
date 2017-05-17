@@ -1,15 +1,15 @@
 # scalatra-coffeescript #
 
-Corresponds to the guide at [http://scalatra.org/2.4/guides/resources/coffeescript.html](http://scalatra.org/2.4/guides/resources/coffeescript.html).
+Corresponds to the guide at [http://scalatra.org/2.5/guides/resources/coffeescript.html](http://scalatra.org/2.5/guides/resources/coffeescript.html).
 
 ## Build & Run ##
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.4/resources/scalatra-coffeescript
+$ cd scalatra-website-examples/2.5/resources/scalatra-coffeescript
 $ chmod +x sbt
 $ ./sbt
-> container:start
+> jetty:start
 > browse
 ```
 
