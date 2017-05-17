@@ -1,6 +1,6 @@
 # scalatra-coffeescript #
 
-Corresponds to the guide at [http://scalatra.org/2.5/guides/resources/coffeescript.html](http://scalatra.org/2.5/guides/resources/coffeescript.html).
+Corresponds to the guide at [http://scalatra.org/guides/2.5/resources/coffeescript.html](http://scalatra.org/guides/2.5/resources/coffeescript.html).
 
 ## Build & Run ##
 
@@ -8,11 +8,8 @@ Corresponds to the guide at [http://scalatra.org/2.5/guides/resources/coffeescri
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
 $ cd scalatra-website-examples/2.5/resources/scalatra-coffeescript
 $ chmod +x sbt
-$ ./sbt
-> jetty:start
+$ ./sbt ~jetty:start
 > browse
 ```
 
-If `browse` doesn't launch your browser, manually open [http://localhost:8080/](http://localhost:8080/) in your browser.
-
-NB: you may need to manually create a project/target/wro4j directory if the plugin doesn't do so automatically.
+Open [http://localhost:8080/](http://localhost:8080/) in your browser.

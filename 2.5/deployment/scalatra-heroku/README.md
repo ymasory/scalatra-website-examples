@@ -1,6 +1,6 @@
 # scalatra-heroku #
 
-Corresponds to the guide at [http://scalatra.org/2.5/guides/deployment/heroku.html](http://scalatra.org/2.5/guides/deployment/heroku.html).
+Corresponds to the guide at [http://scalatra.org/guides/2.5/deployment/heroku.html](http://scalatra.org/guides/2.5/deployment/heroku.html).
 
 ## Build & Run ##
 
@@ -12,4 +12,4 @@ $ ./sbt stage
 $ ./target/universal/stage/bin/heroku-example
 ```
 
-Then open [http://localhost:8080](http://localhost:8080).
+Open [http://localhost:8080](http://localhost:8080).

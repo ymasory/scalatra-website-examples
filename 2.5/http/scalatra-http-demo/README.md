@@ -6,9 +6,7 @@
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
 $ cd scalatra-website-examples/2.5/http/scalatra-http-demo
 $ chmod +x sbt
-$ ./sbt
-> jetty:start
-> browse
+$ ./sbt ~jetty:start
 ```
 
-If `browse` doesn't launch your browser, manually open [http://localhost:8080/](http://localhost:8080/) in your browser.
+Open [http://localhost:8080/](http://localhost:8080/) in your browser.

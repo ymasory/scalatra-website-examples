@@ -3,10 +3,10 @@
 ## Build & Run ##
 
 ```sh
-$ cd Scalatra_Casbah_Example
-$ ./sbt
-> jetty:start
-> browse
+$ git clone https://github.com/scalatra/scalatra-website-examples.git
+$ cd scalatra-website-examples/2.5/persistence/scalatra-casbah-example
+$ chmod +x sbt
+$ ./sbt ~jetty:start
 ```
 
-If `browse` doesn't launch your browser, manually open [http://localhost:8080/](http://localhost:8080/) in your browser.
+Open [http://localhost:8080/](http://localhost:8080/) in your browser.

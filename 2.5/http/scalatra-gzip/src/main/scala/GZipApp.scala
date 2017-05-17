@@ -8,7 +8,7 @@ class GZipApp extends ScalatraServlet with GZipSupport {
     <html>
       <body>
         <h1>This is
-          <a href="http://scalatra.org/2.4/guides/http/gzip.html">
+          <a href="http://scalatra.org/guides/2.5/http/gzip.html">
             http/gzip
           </a>!
         </h1>
