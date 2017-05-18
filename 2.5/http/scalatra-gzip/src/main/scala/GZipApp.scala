@@ -2,7 +2,7 @@ package org.scalatra.example
 
 import org.scalatra._
 
-class GZipApp extends ScalatraServlet with GZipSupport {
+class GZipApp extends ScalatraServlet with ContentEncodingSupport {
 
   get("/") {
     <html>
