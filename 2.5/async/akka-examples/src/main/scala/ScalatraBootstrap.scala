@@ -15,6 +15,6 @@ class ScalatraBootstrap extends LifeCycle {
   }
 
   override def destroy(context:ServletContext) {
-    system.shutdown()
+    system.terminate()
   }
 }
