@@ -12,14 +12,9 @@ import java.util.concurrent.atomic.AtomicInteger
 
 /** A fake datastore which keeps Todo objects in RAM.
  *
- * CommandHandler is a built-in part of Scalatra which gives you a generic
- * chunk of logic for command execution. You can write your own 
- * CommandHandler base class if you want to, and this might be quite
- * useful in a larger application.
- * 
  * Logging is just here to satisfy the compiler. 
  */
-object TodoData extends Logging with CommandHandler {
+object TodoData extends Logging {
 
   /** A counter variable to fake out auto-incrementing keys for us **/
   val idCounter = new AtomicInteger(3)
@@ -35,20 +30,6 @@ object TodoData extends Logging with CommandHandler {
     all.filterNot(_.done == true).length
   }
 
-  /** Handles execution of Command requests.
-   *
-   * Checks what kind of command is coming in the door and handles whatever
-   * work the Command should do when executed.
-   * 
-   * By the time you get into the cases, you can start handling the work
-   * you want the command to do. When it gets to that point, it's already 
-   * successfully validated.
-   */
-  protected def handle: Handler  = {
-    case c: CreateTodoCommand =>
-      add(newTodo(~c.name.value))
-  }
-  
   /** Instantiates a new `Todo` object with an auto-incremented primary key id. 
    */
   def newTodo(name: String) = Todo(idCounter.incrementAndGet, name)
