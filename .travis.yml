@@ -6,8 +6,7 @@ services:
 cache:
   directories:
     - $HOME/.ivy2/cache
-before_script:
-  - sudo chmod +x /usr/local/bin/sbt
+sudo: false
 env:
   - TEST_DIR=2.5/async/akka-examples
   - TEST_DIR=2.5/async/scalatra-atmosphere-embedded
