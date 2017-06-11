@@ -1,4 +1,4 @@
-organization := "com.example"
+organization := "org.scalatra.example"
 name := "Scalatra Twirl"
 version := "0.1.0-SNAPSHOT"
 scalaVersion := "2.11.8"

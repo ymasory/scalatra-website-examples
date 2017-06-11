@@ -1,11 +1,11 @@
-package com.example
+package org.scalatra.example
 
 import org.scalatra._
 
 class ScalatraTwirlServlet extends ScalatraServlet {
 
   get("/") {
-    com.example.html.hello.render(new java.util.Date)
+    org.scalatra.example.html.hello.render(new java.util.Date)
   }
 
 }

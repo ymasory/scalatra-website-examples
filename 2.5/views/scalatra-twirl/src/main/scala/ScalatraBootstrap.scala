@@ -1,4 +1,4 @@
-package com.example
+package org.scalatra.example
 
 import org.scalatra._
 import javax.servlet.ServletContext
