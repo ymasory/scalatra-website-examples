@@ -3,7 +3,8 @@ import org.slf4j.LoggerFactory
 import slickexample._
 import org.scalatra._
 import javax.servlet.ServletContext
-import slick.driver.JdbcDriver.api._
+
+import slick.jdbc.H2Profile.api._
 
 /**
  * This is the ScalatraBootstrap bootstrap file. You can use it to mount servlets or
@@ -18,7 +19,7 @@ class ScalatraBootstrap extends LifeCycle {
   logger.info("Created c3p0 connection pool")
 
   override def init(context: ServletContext) {
-    val db = Database.forDataSource(cpds)
+    val db = Database.forDataSource(cpds, None)
     context.mount(new SlickApp(db), "/*")
   }
 

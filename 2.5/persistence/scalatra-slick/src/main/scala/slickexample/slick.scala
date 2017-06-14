@@ -2,7 +2,7 @@ package slickexample
 
 import org.scalatra.{ScalatraBase, FutureSupport, ScalatraServlet}
 
-import slick.driver.JdbcDriver.api._
+import slick.jdbc.H2Profile.api._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
