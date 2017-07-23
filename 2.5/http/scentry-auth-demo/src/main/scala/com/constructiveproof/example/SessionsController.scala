@@ -1,7 +1,5 @@
 package com.constructiveproof.example
 
-
-import com.constructiveproof.example.{ScentryauthdemoStack}
 import com.constructiveproof.example.auth.AuthenticationSupport
 
 class SessionsController extends ScentryauthdemoStack with AuthenticationSupport {

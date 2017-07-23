@@ -4,6 +4,8 @@ import org.scalatra._
 import scala.xml.{Text, Node}
 import scalate.ScalateSupport
 
+import scala.language.postfixOps
+
 class HttpExample extends ScalatraServlet with FlashMapSupport with ScalateSupport {
 
   private def displayPage(title:String, content:Seq[Node]) = Template.page(title, content, url(_))

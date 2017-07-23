@@ -4,7 +4,7 @@ import org.scalatra.{ScalatraBase, FutureSupport, ScalatraServlet}
 
 import slick.jdbc.H2Profile.api._
 
-import scala.concurrent.ExecutionContext.Implicits.global
+// import scala.concurrent.ExecutionContext.Implicits.global
 
 object Tables {
 

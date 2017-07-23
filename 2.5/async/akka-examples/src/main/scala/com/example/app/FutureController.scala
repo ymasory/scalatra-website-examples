@@ -23,7 +23,7 @@ object HttpClient {
 
   def retrievePage()(implicit ctx: ExecutionContext): Future[String] = {
     val prom = Promise[String]()
-    dispatch.Http(url("http://scalatra.org/") OK as.String) onComplete {
+    dispatch.Http.default(url("http://scalatra.org/") OK as.String) onComplete {
       case Success(content) => prom.complete(Try(content))
       case Failure(exception) => println(exception)
     }
