@@ -2,11 +2,12 @@ package org.scalatra.example
 
 import org.scalatra._
 import scalate.ScalateSupport
+import org.squeryl._
+import org.squeryl.dsl._
 import org.scalatra.example.data.DatabaseInit
 import org.scalatra.example.data.DatabaseSessionSupport
 import org.scalatra.example.models.Article
 import org.scalatra.example.models.BlogDb
-import org.squeryl.PrimitiveTypeMode._
 import java.util.Random
 import java.util.Collections
 
@@ -15,13 +16,14 @@ class ArticlesController extends ScalatraServlet
 	with DatabaseSessionSupport 
 	with ScalateSupport
 	with MethodOverride
-	with FlashMapSupport {
+	with FlashMapSupport
+  with PrimitiveTypeMode {
 
   get("/") {
     contentType = "text/html"
       
     val articles = from(BlogDb.articles)(select(_))
-    ssp("/articles/index", "articles" -> articles)
+    ssp("/articles/index", "articles" -> articles.toList)
   }
   
   val newArticle = get("/articles/new") { 
