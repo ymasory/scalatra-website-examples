@@ -3,7 +3,7 @@ import com.typesafe.sbt.SbtStartScript
 organization := "com.example"
 name := "Scalatra Atmosphere Embedded"
 version := "0.1.0-SNAPSHOT"
-scalaVersion := "2.12.2"
+scalaVersion := "2.12.3"
 
 val ScalatraVersion = "2.6.+"
 val jettyVersion = "9.4.6.v20170531"

@@ -1,7 +1,7 @@
 organization := "org.scalatra.example"
 name := "Scalatra Twirl"
 version := "0.1.0-SNAPSHOT"
-scalaVersion := "2.12.2"
+scalaVersion := "2.12.3"
 
 val ScalatraVersion = "2.6.+"
 
