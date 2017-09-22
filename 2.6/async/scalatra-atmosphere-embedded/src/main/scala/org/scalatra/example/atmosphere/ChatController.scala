@@ -1,19 +1,15 @@
 package org.scalatra.example.atmosphere
 
-// Default imports from a stock Scalatra g8 code generator:
-import org.scalatra._
-import scalate.ScalateSupport
-import org.scalatra.atmosphere._
-import org.scalatra.servlet.AsyncSupport
-import org.scalatra.json.{JValueResult, JacksonJsonSupport}
-import org.json4s._
-import JsonDSL._
 import java.util.Date
-import java.text.SimpleDateFormat
-import org.fusesource.scalate.Template
 
-import scala.concurrent._
-import ExecutionContext.Implicits.global
+import org.json4s.JsonDSL._
+import org.json4s._
+import org.scalatra._
+import org.scalatra.atmosphere._
+import org.scalatra.json.{JValueResult, JacksonJsonSupport}
+import org.scalatra.scalate.ScalateSupport
+
+import scala.concurrent.ExecutionContext.Implicits.global
 
 class ChatController extends ScalatraServlet 
   with ScalateSupport with JValueResult 

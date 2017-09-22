@@ -14,7 +14,11 @@ $ ./sbt run
 Open [http://localhost:8080/](http://localhost:8080/) in your browser.
 
 You can build an embedded Atmosphere-enabled app which runs under Jetty, by
-calling the `stage` task once you're in SBT. This will package a start script
-for you - it can be run by calling `target/start` from the top-level project
-directory.
+calling the `stage` task once you're in SBT. This will package jar files and
+generate a start script for you - it can be run by calling the following command
+from the top-level project directory.
+
+```
+$ target/universal/stage/bin/scalatra-atmosphere-embedded
+```
 

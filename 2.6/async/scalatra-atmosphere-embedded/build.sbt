@@ -1,4 +1,4 @@
-import com.typesafe.sbt.SbtStartScript
+import com.typesafe.sbt.SbtNativePackager.autoImport.NativePackagerHelper._
 
 organization := "com.example"
 name := "Scalatra Atmosphere Embedded"
@@ -19,6 +19,4 @@ libraryDependencies ++= Seq(
   "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"
 )
 
-enablePlugins(JettyPlugin)
-
-Seq(SbtStartScript.startScriptForClassesSettings: _*)
+enablePlugins(JettyPlugin, JavaServerAppPackaging)
