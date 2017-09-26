@@ -16,3 +16,4 @@ $ ./sbt ~jetty:start
 ```
 
 You can see the pet store APIs specification at [http://localhost:8080/api-docs/swagger.json](http://localhost:8080/api-docs/swagger.json).
+You can see Swagger-UI at [https://editor.swagger.io/](https://editor.swagger.io/) or [https://swagger.io/swagger-ui/](https://swagger.io/swagger-ui/).
