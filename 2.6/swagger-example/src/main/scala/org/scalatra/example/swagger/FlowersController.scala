@@ -4,6 +4,7 @@ import org.scalatra._
 
 // Swagger-specific Scalatra imports
 import org.scalatra.swagger._
+import org.scalatra.swagger.ResponseMessage
 
 // JSON-related libraries
 import org.json4s.{DefaultFormats, Formats}
@@ -28,6 +29,7 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
   val getFlowers =
     (apiOperation[List[Flower]]("getFlowers")
       summary "Show all flowers"
+      tags("Flowers")
       notes "Shows all the flowers in the flower shop. You can search it too."
       parameter queryParam[Option[String]]("name").description("A name to search for"))
 
@@ -42,8 +44,10 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet w
   val findBySlug =
     (apiOperation[Flower]("findBySlug")
       summary "Find by a flower by its slug"
+      tags("Flowers")
       parameters (
-      pathParam[String]("slug").description("Slug of flower that needs to be fetched")))
+      pathParam[String]("slug").description("Slug of flower that needs to be fetched"))
+      responseMessage ResponseMessage(404, "Slug Not Found"))
 
   get("/:slug", operation(findBySlug)) {
     FlowerData.all find (_.slug == params("slug")) match {
