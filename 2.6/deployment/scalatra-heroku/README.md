@@ -1,12 +1,12 @@
 # scalatra-heroku #
 
-Corresponds to the guide at [http://scalatra.org/guides/2.5/deployment/heroku.html](http://scalatra.org/guides/2.5/deployment/heroku.html).
+Corresponds to the guide at [http://scalatra.org/guides/2.6/deployment/heroku.html](http://scalatra.org/guides/2.6/deployment/heroku.html).
 
 ## Build & Run ##
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.5/deployment/scalatra-heroku
+$ cd scalatra-website-examples/2.6/deployment/scalatra-heroku
 $ chmod +x sbt
 $ ./sbt stage
 $ ./target/universal/stage/bin/heroku-example

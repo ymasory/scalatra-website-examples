@@ -1,12 +1,12 @@
 # Route Test #
 
-Corresponds to the guide at [http://scalatra.org/guides/2.5/persistence/slick.html](http://scalatra.org/guides/2.5/persistence/slick.html)
+Corresponds to the guide at [http://scalatra.org/guides/2.6/persistence/slick.html](http://scalatra.org/guides/2.6/persistence/slick.html)
 
 ## Build & Run ##
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.5/persistence/scalatra-slick
+$ cd scalatra-website-examples/2.6/persistence/scalatra-slick
 $ chmod +x sbt
 $ ./sbt ~jetty:start
 ```

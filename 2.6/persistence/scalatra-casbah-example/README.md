@@ -4,7 +4,7 @@
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.5/persistence/scalatra-casbah-example
+$ cd scalatra-website-examples/2.6/persistence/scalatra-casbah-example
 $ chmod +x sbt
 $ ./sbt ~jetty:start
 ```

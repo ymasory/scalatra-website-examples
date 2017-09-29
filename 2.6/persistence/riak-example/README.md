@@ -4,7 +4,7 @@
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.5/persistence/riak-example
+$ cd scalatra-website-examples/2.6/persistence/riak-example
 $ chmod +x sbt
 $ ./sbt ~jetty:start
 ```

@@ -7,7 +7,7 @@ aren't currently complete (pull requests welcome if you're interested in that).
 We're primarily interested in showing how the commands work on the server side.
 
 A full tutorial on the use of validation commands is available on the
-[Scalatra website](http://scalatra.org/guides/2.5/formats/commands.html).
+[Scalatra website](http://scalatra.org/guides/2.6/formats/forms.html).
 
 ## Build & Run ##
 
