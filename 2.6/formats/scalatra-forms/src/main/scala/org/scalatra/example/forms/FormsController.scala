@@ -2,12 +2,11 @@ package org.scalatra.example.forms
 
 import org.scalatra._
 import org.scalatra.i18n.I18nSupport
-import scalate.ScalateSupport
 import org.scalatra.forms._
 
 case class ValidationForm(text: String, email: Option[String], number: Option[Int], checkbox: Seq[String])
 
-class FormsController extends ScalatraServlet with ScalateSupport with FormSupport with I18nSupport {
+class FormsController extends ScalatraServlet with FormSupport with I18nSupport {
 
   val form = mapping(
     "text"     -> label("Text", text(required, maxlength(100))),
