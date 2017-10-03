@@ -1,10 +1,7 @@
 # Todolist #
 
-This is an example application demonstrating the use of validation commands
-in the [Scalatra](http://scalatra.org) web framework. Note: the JavaScript parts
-aren't currently complete (pull requests welcome if you're interested in that).
-
-We're primarily interested in showing how the commands work on the server side.
+This is an example application demonstrating the use of the validation forms
+in the [Scalatra](http://scalatra.org) web framework.
 
 A full tutorial on the use of validation commands is available on the
 [Scalatra website](http://scalatra.org/guides/2.6/formats/forms.html).
