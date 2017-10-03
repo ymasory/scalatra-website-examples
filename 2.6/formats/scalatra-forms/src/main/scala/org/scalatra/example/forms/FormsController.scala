@@ -21,7 +21,7 @@ class FormsController extends ScalatraServlet with FormSupport with I18nSupport 
 
   post("/") {
     validate(form)(
-      errors => BadRequest(html.form(multiParams, errors.toMap)),
+      errors => BadRequest(html.form()),
       form   => html.result(form)
     )
   }
