@@ -4,12 +4,12 @@ import org.scalatra._
 
 class AuthDemo extends ScalatraServlet with AuthenticationSupport {
 
-
   get("/*") {
-    basicAuth
+    val user: User = basicAuth.get
+
     <html>
       <body>
-        <h1>Hello from Scalatra</h1>
+        <h1>Hello '{user.id}' from Scalatra Basic Authentication Demo</h1>
         <p>You are authenticated.</p>
       </body>
     </html>
