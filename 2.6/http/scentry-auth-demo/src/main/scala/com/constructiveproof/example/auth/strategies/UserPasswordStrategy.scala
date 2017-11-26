@@ -33,7 +33,7 @@ class UserPasswordStrategy(protected val app: ScalatraBase)(implicit request: Ht
   def authenticate()(implicit request: HttpServletRequest, response: HttpServletResponse): Option[User] = {
     logger.info("UserPasswordStrategy: attempting authentication")
 
-    if(login == "foo" && password == "foo") {
+    if(login == "foo" && password == "bar") {
       logger.info("UserPasswordStrategy: login succeeded")
       Some(User("foo"))
     } else {
