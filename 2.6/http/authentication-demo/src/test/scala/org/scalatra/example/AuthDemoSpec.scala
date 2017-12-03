@@ -16,7 +16,6 @@ class AuthDemoSpec extends ScalatraSpec { def is = s2"""
     status must_== 401
   }
 
-
   def validUser = {
     val validAuth = "Basic " + Base64.getEncoder.encodeToString("foo:bar")
 
@@ -25,8 +24,7 @@ class AuthDemoSpec extends ScalatraSpec { def is = s2"""
       params = Seq.empty,
       headers = Seq[(String, String)](("Authorization", validAuth))
     ) {
-      status must_== 200
-      body must contain("You are authenticated.")
+      { status must_== 200 } and { body must contain("You are authenticated.") }
     }
   }
 

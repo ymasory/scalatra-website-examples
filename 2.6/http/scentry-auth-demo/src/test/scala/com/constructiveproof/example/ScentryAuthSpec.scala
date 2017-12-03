@@ -16,8 +16,7 @@ Authenticate by valid account should show login message $showLoginMessage
     val root = get("/") {
       val location = header("Location").split(';').head // Split to strip jsessionid
 
-      location  must endWith("/session/new")
-      status must_== 302
+      { status must_== 302 } and { location  must endWith("/sessions/new") }
     }
        
     val login = get("/sessions/new") {
@@ -29,21 +28,30 @@ Authenticate by valid account should show login message $showLoginMessage
       uri = "/sessions",
       params = Seq(("login", "foo"), ("password", "bar"), ("rememberMe", "true"))
     ) {
-      header("Set-Cookie") must contain("rememberMe=foobar")
-      header("Location") must endWith("/")
 
       location = new URI(header("Location"))
-      status must_== 302
+
+      {
+        status must_== 302
+      } and {
+        header("Set-Cookie") must contain("rememberMe=foobar")
+      } and {
+        val l = new URI(header("Location"))
+        l.getPath must_== ""
+      }
     }
 
     val redirection = get(location.getPath) {
-      status must_== 200
-      body must contain("This is a protected controller action")
+      { status must_== 200 } and { body must contain("This is a protected controller action") }
     }
 
     val logout = get("sessions/logout") {
-       header("Location") must endWith("/session/new")
-      status must_== 302
+      {
+        status must_== 302
+      } and {
+         val l = new URI(header("Location"))
+         l.getPath must_== ""
+      }
     }
 
     root and login and success and redirection and logout
@@ -68,8 +76,7 @@ Authenticate by invalid account should redirect login screen $redirectLoginScree
       uri = "/sessions",
       params = Seq(("login", "bar"), ("password", "baz"), ("rememberMe", "true"))
     ) {
-      header("Location") must endWith("/sessions/new")
-      status must_== 302
+      { status must_== 302 } and { header("Location") must endWith("/sessions/new") }
     }
 
     login and redirection

@@ -4,7 +4,7 @@
 
 ```sh
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
-$ cd scalatra-website-examples/2.5/http/scentry-auth-demo
+$ cd scalatra-website-examples/2.6/http/scentry-auth-demo
 $ chmod +x sbt
 $ ./sbt ~jetty:start
 ```
