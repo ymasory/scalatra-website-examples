@@ -5,7 +5,7 @@ import org.apache.http.impl.client.{ CloseableHttpClient, HttpClientBuilder }
 
 class GZipSpec extends ScalatraSpec { def is = s2"""
 GET / on GZipApp
-  should return status 200 and have header "Content-Encoding: gzip" $gzip
+  should return status 200 and header "Content-Encoding: gzip" $gzip
 """
 
   addServlet(classOf[GZipApp], "/*")
