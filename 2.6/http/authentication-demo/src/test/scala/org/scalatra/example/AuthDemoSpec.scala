@@ -5,9 +5,10 @@ import org.scalatra.test.specs2._
 import java.util.Base64;
 
 class AuthDemoSpec extends ScalatraSpec { def is = s2"""
-  GET / on AuthDemo with no user & password should return status 401      $noUser
-  GET / on AuthDemo with valid user & password should return status 200   $validUser
-  GET / on AuthDemo with invalid user & password should return status 401 $invalidUser
+  GET / on AuthDemo with
+    no user & password should return status 401                     $noUser
+    valid user & password should return status 200 & expected body  $validUser
+    invalid user & password should return status 401                $invalidUser
 """
 
   addServlet(classOf[AuthDemo], "/*")
