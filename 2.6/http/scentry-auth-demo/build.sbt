@@ -10,7 +10,7 @@ libraryDependencies ++= Seq(
   "org.scalatra"            %% "scalatra"          % ScalatraVersion,
   "org.scalatra"            %% "scalatra-scalate"  % ScalatraVersion,
   "org.scalatra"            %% "scalatra-specs2"   % ScalatraVersion    % "test",
-  "ch.qos.logback"          % "logback-classic"    % "1.2.3",
+  "ch.qos.logback"          % "logback-classic"    % "1.2.3"            % "provided",
   "org.eclipse.jetty"       %  "jetty-webapp"      % "9.4.7.v20170914"  % "provided",
   "javax.servlet"           %  "javax.servlet-api" % "3.1.0"            % "provided"
 )

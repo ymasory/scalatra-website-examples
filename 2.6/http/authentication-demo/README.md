@@ -1,6 +1,6 @@
 # Authentication Demo #
 
-Corresponds to the guide at [http://scalatra.org/guides/2.5/http/authentication.html](http://scalatra.org/guides/2.5/http/authentication.html)
+Corresponds to the guide at [http://scalatra.org/guides/2.6/http/authentication.html](http://scalatra.org/guides/2.6/http/authentication.html)
 
 
 ## Build & Run ##
