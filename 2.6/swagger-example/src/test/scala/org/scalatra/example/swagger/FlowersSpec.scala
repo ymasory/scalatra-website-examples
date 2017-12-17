@@ -2,17 +2,14 @@ package org.scalatra.example.swagger
 
 import org.scalatra.test.specs2._
 
-// For more on Specs2, see http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
-class FlowersSpec extends ScalatraSpec { def is =
-  "GET / on Flowers"                     ^
-    "should return status 200"                  ! root200^
-                                                p^
-  "GET / on Flowers with a name param"          ^
-    "should return status 200"                  ! nameParamWorks^
-                                                p^
-  "GET /:slug on Flowers"                       ^
-    "should return status 200"                  ! slugWorks
-                                                end
+class FlowersSpec extends ScalatraSpec { def is = s2"""
+  GET / on Flowers 
+    should return status 200 $root200
+  GET / on Flowers with a name param
+    should return status 200 $nameParamWorks
+  GET /:slug on Flowers
+    should return status 200 $slugWorks
+"""
 
   implicit val swagger = new FlowersSwagger
   addServlet(new FlowersController, "/flowers/*")
