@@ -6,7 +6,8 @@ import com.constructiveproof.example.models.User
 import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
 import org.slf4j.{Logger, LoggerFactory}
 
-class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: HttpServletRequest, response: HttpServletResponse)
+class RememberMeStrategy(protected val app: ScalatraBase)
+                        (implicit request: HttpServletRequest, response: HttpServletResponse)
   extends ScentryStrategy[User] {
 
   val logger: Logger = LoggerFactory.getLogger(getClass)
@@ -75,7 +76,7 @@ class RememberMeStrategy(protected val app: ScalatraBase)(implicit request: Http
   override def beforeLogout(user: User)(implicit request: HttpServletRequest, response: HttpServletResponse): Unit = {
     logger.info("rememberMe: beforeLogout")
     if (user != null){
-      user.forgetMe
+      user.forgetMe()
     }
     app.cookies.delete(COOKIE_KEY)(CookieOptions(path = "/"))
   }

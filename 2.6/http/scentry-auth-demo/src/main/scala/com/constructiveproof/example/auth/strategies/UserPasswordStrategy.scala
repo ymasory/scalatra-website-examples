@@ -6,7 +6,8 @@ import com.constructiveproof.example.models.User
 import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
 import org.slf4j.{Logger, LoggerFactory}
 
-class UserPasswordStrategy(protected val app: ScalatraBase)(implicit request: HttpServletRequest, response: HttpServletResponse)
+class UserPasswordStrategy(protected val app: ScalatraBase)
+                          (implicit request: HttpServletRequest, response: HttpServletResponse)
   extends ScentryStrategy[User] {
 
   val logger: Logger = LoggerFactory.getLogger(getClass)
