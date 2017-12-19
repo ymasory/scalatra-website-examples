@@ -29,7 +29,6 @@ class AuthDemoSpec extends ScalatraSpec { def is = s2"""
     }
   }
 
-
   def invalidUser: MatchResult[Any] = {
     val invalidAuth = "Basic " + Base64.getEncoder.encodeToString("baz:qux")
 
