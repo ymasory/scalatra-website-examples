@@ -8,9 +8,11 @@ val ScalatraVersion = "2.6.+"
 libraryDependencies ++= Seq(
   "org.scalatra"            %% "scalatra"          % ScalatraVersion,
   "org.scalatra"            %% "scalatra-specs2"   % ScalatraVersion    % Test,
-  "org.eclipse.jetty"       %  "jetty-webapp"      % "9.4.6.v20170531"  % Provided,
+  "javax.servlet"           %  "javax.servlet-api" % "3.1.0"            % Provided,
+  "ch.qos.logback"          %  "logback-classic"   % "1.2.3"            % Provided,
+  "org.eclipse.jetty"       %  "jetty-webapp"      % "9.4.7.v20170914"  % Provided,
   "javax.servlet"           %  "javax.servlet-api" % "3.1.0"            % Provided
 )
 
 enablePlugins(SbtTwirl)
-enablePlugins(JettyPlugin)
+enablePlugins(ScalatraPlugin)
