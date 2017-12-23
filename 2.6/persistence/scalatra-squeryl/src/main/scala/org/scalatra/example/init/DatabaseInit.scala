@@ -1,7 +1,7 @@
 package org.scalatra.example.data
 
 import com.mchange.v2.c3p0.ComboPooledDataSource
-import org.squeryl.adapters.{H2Adapter, MySQLAdapter}
+import org.squeryl.adapters.H2Adapter
 import org.squeryl.Session
 import org.squeryl.SessionFactory
 import org.slf4j.LoggerFactory
@@ -38,6 +38,3 @@ trait DatabaseInit {
     cpds.close()
   }
 }
-
-
-
