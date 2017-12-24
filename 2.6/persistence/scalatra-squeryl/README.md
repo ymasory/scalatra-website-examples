@@ -1,7 +1,7 @@
 Scalatra Squeryl Example
 ========================
 
-Corresponds to the guide at [http://scalatra.org/guides/2.5/persistence/squeryl.html](http://scalatra.org/guides/2.6/persistence/squeryl.html)
+Corresponds to the guide at [http://scalatra.org/guides/2.6/persistence/squeryl.html](http://scalatra.org/guides/2.6/persistence/squeryl.html)
 
 This app demonstrates how to use Scalatra with an object-relational mapper, integrate C3P0 connection pooling, and bootstrap the database connections into existence. 
 

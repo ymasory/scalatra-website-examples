@@ -17,7 +17,7 @@ class ArticlesControllerSpec extends FunSuite with ScalatraSuite with DatabaseIn
     closeDbConnection()
   }
   
-  test("simple get") {
+  test("post article") {
     get("/create-db") {
       status should equal (302)
     }
@@ -25,6 +25,19 @@ class ArticlesControllerSpec extends FunSuite with ScalatraSuite with DatabaseIn
     get("/") {
       status should equal (200)
     }
+
+    post(
+      uri = "/articles",
+      params = Seq(
+        ("title", "Scalatra news"),
+        ("body",  "new Scalatra release!!")
+      )
+    ) {
+      status should equal(302)
+    }
+
+    get("/") {
+      body should include("Scalatra news")
+    }
   }
 }
-
