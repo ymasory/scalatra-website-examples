@@ -1,5 +1,5 @@
 import _root_.akka.actor.{Props, ActorSystem}
-import com.example.app._
+import org.scalatra.example._
 import org.scalatra._
 import javax.servlet.ServletContext
 

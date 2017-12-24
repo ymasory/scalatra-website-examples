@@ -1,4 +1,4 @@
-organization := "com.example"
+organization := "org.scalatra.example"
 name := "Akka Examples"
 version := "0.1.0-SNAPSHOT"
 scalaVersion := "2.12.4"
@@ -15,4 +15,4 @@ libraryDependencies ++= Seq(
   "javax.servlet"           %  "javax.servlet-api" % "3.1.0"            % "provided"
 )
 
-enablePlugins(JettyPlugin)
+enablePlugins(ScalatraPlugin)
