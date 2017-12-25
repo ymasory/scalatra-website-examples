@@ -1,4 +1,4 @@
-package com.example.app
+package org.scalatra.example
 
 import akka.actor.{Actor, ActorRef, ActorSystem}
 import akka.pattern.ask
