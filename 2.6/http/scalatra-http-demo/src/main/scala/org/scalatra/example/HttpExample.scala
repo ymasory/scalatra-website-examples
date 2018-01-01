@@ -1,14 +1,9 @@
 package org.scalatra.example
-
 import org.scalatra._
-import scala.xml.{Elem, Node, Text}
-import scalate.ScalateSupport
+import scala.xml.{Text, Node}
 import scala.language.postfixOps
-
-class HttpExample extends ScalatraServlet with FlashMapSupport with ScalateSupport {
-
-  private def displayPage(title:String, content:Seq[Node]): Elem = Template.page(title, content, url(_))
-
+class HttpExample extends ScalatraServlet with FlashMapSupport {
+  private def displayPage(title:String, content:Seq[Node]) = Template.page(title, content, url(_))
   get("/date/:year/:month/:day") {
     displayPage("Scalatra: Date Example",
     <ul>
@@ -19,7 +14,6 @@ class HttpExample extends ScalatraServlet with FlashMapSupport with ScalateSuppo
     <pre>Route: /date/:year/:month/:day</pre>
     )
   }
-
   get("/form") {
     displayPage("Scalatra: Form Post Example",
     <form action={url("/post")} method='POST'>
@@ -29,14 +23,12 @@ class HttpExample extends ScalatraServlet with FlashMapSupport with ScalateSuppo
     <pre>Route: /form</pre>
     )
   }
-
   post("/post") {
     displayPage("Scalatra: Form Post Result",
     <p>You posted: {params("submission")}</p>
     <pre>Route: /post</pre>
     )
   }
-
   get("/login") {
     (session.get("first"), session.get("last")) match {
       case (Some(first:String), Some(last:String)) =>
@@ -44,7 +36,7 @@ class HttpExample extends ScalatraServlet with FlashMapSupport with ScalateSuppo
         <pre>You have logged in as: {first + "-" + last}</pre>
         <pre>Route: /login</pre>)
       case x =>
-        displayPage("Scalatra: Session Example" + x.toString,
+        displayPage("Scalatra: Session Example",
         <form action={url("/login")} method='POST'>
         First Name: <input name="first" type='text'/>
         Last Name: <input name="last" type='text'/>
@@ -53,37 +45,29 @@ class HttpExample extends ScalatraServlet with FlashMapSupport with ScalateSuppo
         <pre>Route: /login</pre>)
     }
   }
-
   post("/login") {
     (params("first"), params("last")) match {
-      case (first:String, last:String) =>
+      case (first:String, last:String) => {
         session("first") = first
         session("last") = last
         displayPage("Scalatra: Session Example",
         <pre>You have just logged in as: {first + " " + last}</pre>
         <pre>Route: /login</pre>)
+      }
     }
   }
-
   get("/logout") {
-    session.invalidate()
+    session.invalidate
     displayPage("Scalatra: Session Example",
     <pre>You have logged out</pre>
     <pre>Route: /logout</pre>)
   }
-
   get("/") {
     displayPage("Scalatra: Hello World",
     <h2>Hello world!</h2>
     <p>Referer: { (request referrer) map { Text(_) } getOrElse { <i>none</i> }}</p>
     <pre>Route: /</pre>)
   }
-
-  get("/scalate") {
-    val content = "this is some fake content for the web page"
-    layoutTemplate("index.scaml", "content" -> content)
-  }
-
   get("/flash-map/form") {
     displayPage("Scalatra: Flash Map Example",
     <span>Supports the post-then-redirect pattern</span><br />
@@ -92,36 +76,19 @@ class HttpExample extends ScalatraServlet with FlashMapSupport with ScalateSuppo
       <input type="submit" />
     </form>)
   }
-
   post("/flash-map/form") {
     flash("message") = params.getOrElse("message", "")
     redirect("/flash-map/result")
   }
-
   get("/flash-map/result") {
     displayPage(
-      title = "Scalatra: Flash  Example",
+      title = "Scalatra: Flash Map Example",
       content = <span>Message = {flash.getOrElse("message", "")}</span>
     )
   }
-
-  post("/echo") {
-    import org.scalatra.util.RicherString._
-    params("echo").urlDecode
-  }
 }
-
-
 object Template {
-
-  def page(
-            title:String,
-            content:Seq[Node],
-            url: String => String = identity,
-            head: Seq[Node] = Nil,
-            scripts: Seq[String] = Seq.empty,
-            defaultScripts: Seq[String] = Seq("/assets/js/jquery.min.js", "/assets/js/bootstrap.min.js")
-          ): Elem = {
+  def page(title:String, content:Seq[Node], url: String => String = identity _, head: Seq[Node] = Nil, scripts: Seq[String] = Seq.empty, defaultScripts: Seq[String] = Seq("/assets/js/jquery.min.js", "/assets/js/bootstrap.min.js")) = {
     <html lang="en">
       <head>
         <title>{ title }</title>
@@ -129,20 +96,17 @@ object Template {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-
         <!-- Le styles -->
         <link href="/assets/css/bootstrap.css" rel="stylesheet" />
         <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" />
         <link href="/assets/css/syntax.css" rel="stylesheet" />
         <link href="/assets/css/scalatra.css" rel="stylesheet" />
-
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         {head}
       </head>
-
       <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
           <div class="navbar-inner">
@@ -154,12 +118,10 @@ object Template {
               </a>
               <a class="brand" href="/">Scalatra Examples</a>
               <div class="nav-collapse collapse">
-
               </div><!--/.nav-collapse -->
             </div>
           </div>
         </div>
-
         <div class="container">
           <div class="content">
             <div class="page-header">
@@ -174,6 +136,8 @@ object Template {
                     <li><a href={url("/filter-example")}>Filter example</a></li>
                     <li><a href={url("flash-map/form")}>Flash scope</a></li>
                     <li><a href={url("/form")}>Form example</a></li>
+                    <li><a href={url("/login")}>Session example(login)</a></li>
+                    <li><a href={url("/logout")}>Session example(logout)</a></li>
                     <li><a href="/">Hello world</a></li>
                   </ul>
                 </div>
@@ -185,18 +149,14 @@ object Template {
             </div> <!-- /content -->
           </div> <!-- /container -->
     <footer class="vcard" role="contentinfo">
-
-    </footer>
-
+    </footer>        
           <!-- Le javascript
           ================================================== -->
           <!-- Placed at the end of the document so the pages load faster -->
           { (defaultScripts ++ scripts) map { pth =>
             <script type="text/javascript" src={pth}></script>
           } }
-
         </body>
-
     </html>
   }
 }
