@@ -1,28 +1,23 @@
 language: scala
 jdk:
   - oraclejdk8
-services:
-  - mongodb
 cache:
   directories:
     - $HOME/.ivy2/cache
 sudo: false
 env:
-  - TEST_DIR=2.5/async/akka-examples
-  - TEST_DIR=2.5/async/scalatra-atmosphere-embedded
-  - TEST_DIR=2.5/async/scalatra-atmosphere-example
-  - TEST_DIR=2.5/deployment/scalatra-heroku
-  - TEST_DIR=2.5/formats/scalatra-commands
-  - TEST_DIR=2.5/http/authentication-demo
-  - TEST_DIR=2.5/http/scalatra-gzip
-  - TEST_DIR=2.5/http/scalatra-http-demo
-  - TEST_DIR=2.5/http/scentry-auth-demo
-  - TEST_DIR=2.5/persistence/riak-example
-  - TEST_DIR=2.5/persistence/scalatra-casbah-example
-  - TEST_DIR=2.5/persistence/scalatra-slick
-  - TEST_DIR=2.5/persistence/scalatra-squeryl
-  - TEST_DIR=2.5/resources/scalatra-coffeescript
-  - TEST_DIR=2.5/resources/scalatra-less-css
-  - TEST_DIR=2.5/swagger-example
+  - TEST_DIR=2.6/async/akka-examples
+  - TEST_DIR=2.6/async/scalatra-atmosphere-embedded
+  - TEST_DIR=2.6/async/scalatra-atmosphere-example
+  - TEST_DIR=2.6/deployment/scalatra-heroku
+  - TEST_DIR=2.6/formats/scalatra-forms
+  - TEST_DIR=2.6/http/authentication-demo
+  - TEST_DIR=2.6/http/scalatra-gzip
+  - TEST_DIR=2.6/http/scalatra-http-demo
+  - TEST_DIR=2.6/http/scentry-auth-demo
+  - TEST_DIR=2.6/persistence/scalatra-slick
+  - TEST_DIR=2.6/persistence/scalatra-squeryl
+  - TEST_DIR=2.6/view/scalatra-twirl
+  - TEST_DIR=2.6/swagger-example
 
 script: cd $TEST_DIR && sbt test
