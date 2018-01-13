@@ -17,7 +17,7 @@ env:
   - TEST_DIR=2.6/http/scentry-auth-demo
   - TEST_DIR=2.6/persistence/scalatra-slick
   - TEST_DIR=2.6/persistence/scalatra-squeryl
-  - TEST_DIR=2.6/view/scalatra-twirl
+  - TEST_DIR=2.6/views/scalatra-twirl
   - TEST_DIR=2.6/swagger-example
 
 script: cd $TEST_DIR && sbt test
