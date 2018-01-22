@@ -78,13 +78,15 @@ trait SlickRoutes extends ScalatraBase with FutureSupport {
   def db: Database
 
   get("/db/create-db") {
-    db.run(Tables.createDatabase)
+    val f = db.run(Tables.createDatabase)
+    Await.result(f, Duration.Inf)
 
     "created database"
   }
 
   get("/db/drop-db") {
-    db.run(Tables.dropSchemaAction)
+    val f = db.run(Tables.dropSchemaAction)
+    Await.result(f, Duration.Inf)
     
     "dropped database"
   }
