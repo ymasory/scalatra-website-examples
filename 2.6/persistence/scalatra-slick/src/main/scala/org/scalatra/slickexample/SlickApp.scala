@@ -78,21 +78,14 @@ trait SlickRoutes extends ScalatraBase with FutureSupport {
   def db: Database
 
   get("/db/create-db") {
-    val f = db.run(Tables.createDatabase)
-    Await.result(f, Duration.Inf)
-
-    "created database"
+    db.run(Tables.createDatabase)
   }
 
   get("/db/drop-db") {
-    val f = db.run(Tables.dropSchemaAction)
-    Await.result(f, Duration.Inf)
-    
-    "dropped database"
+    db.run(Tables.dropSchemaAction)
   }
 
   get("/coffees") {
-    contentType = "text/plain"
     db.run(Tables.findCoffeesWithSuppliers.result) map { xs =>
       println(xs)
       xs map { case (s1, s2) => f"  $s1 supplied by $s2" } mkString "\n"
