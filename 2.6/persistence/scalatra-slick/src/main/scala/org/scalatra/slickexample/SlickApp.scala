@@ -79,18 +79,13 @@ trait SlickRoutes extends ScalatraBase with FutureSupport {
 
   get("/db/create-db") {
     db.run(Tables.createDatabase)
-
-    "created database"
   }
 
   get("/db/drop-db") {
     db.run(Tables.dropSchemaAction)
-    
-    "dropped database"
   }
 
   get("/coffees") {
-    contentType = "text/plain"
     db.run(Tables.findCoffeesWithSuppliers.result) map { xs =>
       println(xs)
       xs map { case (s1, s2) => f"  $s1 supplied by $s2" } mkString "\n"
