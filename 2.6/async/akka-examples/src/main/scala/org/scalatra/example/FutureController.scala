@@ -1,4 +1,4 @@
-package com.example.app
+package org.scalatra.example
 
 import akka.actor.ActorSystem
 import dispatch._
