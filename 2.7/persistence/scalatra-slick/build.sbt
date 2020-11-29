@@ -1,7 +1,7 @@
 organization := "org.scalatra.slickexample"
 name := "Scalatra Slick"
 version := "0.1.0-SNAPSHOT"
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.1"
 
 val ScalatraVersion = "2.7.+"
 
