@@ -8,7 +8,7 @@ class HerokuApp extends ScalatraServlet {
     <html>
       <body>
         <h1>This is
-          <a href="http://scalatra.org/guides/2.5/deployment/heroku.html">
+          <a href="https://scalatra.org/guides/2.7/deployment/heroku.html">
             scalatra-heroku
           </a>!
         </h1>

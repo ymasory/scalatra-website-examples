@@ -11,4 +11,6 @@ $ chmod +x sbt
 $ ./sbt ~jetty:start
 ```
 
-Open [http://localhost:8080/](http://localhost:8080/) in your browser.
+First, open [http://localhost:8080/ask](http://localhost:8080/) in your browser. You'll see the "question and answer" in the browser.
+
+Second, Open [http://localhost:8080/](http://localhost:8080/) in your browser. You'll see the "question and answer" in your terminal.

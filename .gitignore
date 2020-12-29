@@ -14,3 +14,4 @@ target/
 metals.sbt
 .bloop
 .vscode
+.bsp
