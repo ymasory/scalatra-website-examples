@@ -23,7 +23,7 @@ class FutureController(system: ActorSystem) extends ScalatraServlet with FutureS
 object HttpClient {
   def retrievePage()(implicit ctx: ExecutionContext): Future[String] = {
     Future {
-      val response = SJHttp("http://scalatra.org/").asString
+      val response = SJHttp("https://scalatra.org/").asString
       response.body
     }
   }

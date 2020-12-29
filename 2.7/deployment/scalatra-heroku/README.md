@@ -9,7 +9,7 @@ $ git clone https://github.com/scalatra/scalatra-website-examples.git
 $ cd scalatra-website-examples/2.7/deployment/scalatra-heroku
 $ chmod +x sbt
 $ ./sbt stage
-$ ./target/universal/stage/bin/heroku-example
+$ target/universal/stage/bin/heroku-example
 ```
 
 Open [http://localhost:8080](http://localhost:8080).
