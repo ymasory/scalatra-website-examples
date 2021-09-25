@@ -3,7 +3,7 @@ name := "Authentication Demo"
 version := "0.1.0-SNAPSHOT"
 scalaVersion := "2.13.6"
 
-val ScalatraVersion = "2.8.0"
+val ScalatraVersion = "2.8.1"
 
 libraryDependencies ++= Seq(
   "org.scalatra"            %% "scalatra-auth"     % ScalatraVersion,
