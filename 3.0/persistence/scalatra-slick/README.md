@@ -8,7 +8,7 @@ Corresponds to the guide at [http://scalatra.org/guides/2.8/persistence/slick.ht
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
 $ cd scalatra-website-examples/2.8/persistence/scalatra-slick
 $ chmod +x sbt
-$ ./sbt ~jetty:start
+$ ./sbt ~Jetty/start
 ```
 
 Open below links in your browser.

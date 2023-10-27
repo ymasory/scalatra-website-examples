@@ -8,7 +8,7 @@ Corresponds to the guide at [http://scalatra.org/guides/3.0/async/pekko.html](ht
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
 $ cd scalatra-website-examples/3.0/async/pekko-examples
 $ chmod +x sbt
-$ ./sbt ~jetty:start
+$ ./sbt ~Jetty/start
 ```
 
 First, open [http://localhost:8080/ask](http://localhost:8080/ask) in your browser. You'll see the "question and answer" in the browser.

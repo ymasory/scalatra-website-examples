@@ -19,7 +19,7 @@ There's a scalatest example showing the use of before and after blocks to config
 $ git clone https://github.com/scalatra/scalatra-website-examples.git
 $ cd scalatra-website-examples/3.0/persistence/scalatra-squeryl
 $ chmod +x sbt
-$ ./sbt ~jetty:start
+$ ./sbt ~Jetty/start
 ```
 
 Go to [http://localhost:8080/create-db](http://localhost:8080/create-db). This will create the database schema.
