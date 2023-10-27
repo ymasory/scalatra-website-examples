@@ -6,8 +6,8 @@ scalaVersion := "3.3.1"
 val ScalatraVersion = "3.0.0"
 
 libraryDependencies ++= Seq(
-  "org.apache.pekko"              %% "pekko-actor"             % "1.0.0" cross(CrossVersion.for3Use2_13),
-  "org.apache.pekko"              %% "pekko-http"              % "1.0.0" cross(CrossVersion.for3Use2_13),
+  "org.apache.pekko"              %% "pekko-actor"             % "1.0.0",
+  "org.apache.pekko"              %% "pekko-http"              % "1.0.0",
   "com.softwaremill.sttp.client3" %% "core"                    % "3.9.0",
   "org.scalatra"                  %% "scalatra-jakarta"        % ScalatraVersion,
   "org.scalatra"                  %% "scalatra-specs2-jakarta" % ScalatraVersion % Test,

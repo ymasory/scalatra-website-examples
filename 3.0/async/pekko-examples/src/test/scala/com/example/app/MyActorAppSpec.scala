@@ -12,7 +12,7 @@ class MyActorAppSpec extends ScalatraSpec { def is = s2"""
 """
 
   val system = ActorSystem()
-  val myActor = system.actorOf(Props[MyActor])
+  val myActor = system.actorOf(Props[MyActor]())
 
   addServlet(new MyActorApp(system, myActor), "/*")
 
