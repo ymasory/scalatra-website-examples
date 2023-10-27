@@ -12,7 +12,7 @@ libraryDependencies ++= Seq(
   "org.scalatra"      %% "scalatra-jakarta"           % ScalatraVersion,
   "org.scalatra"      %% "scalatra-scalatest-jakarta" % ScalatraVersion % Test,
   "ch.qos.logback"    % "logback-classic"             % "1.4.11"        % Provided,
-  "org.eclipse.jetty" %  "jetty-webapp"               % "11.0.15"       % Provided,
+  "org.eclipse.jetty" %  "jetty-webapp"               % "11.0.18"       % Provided,
   "jakarta.servlet"   %  "jakarta.servlet-api"        % "5.0.0"         % Provided
 )
 
@@ -21,4 +21,4 @@ ThisBuild / evictionErrorLevel := Level.Warn
 enablePlugins(SbtTwirl)
 enablePlugins(JettyPlugin)
 
-Jetty / containerLibs := Seq("org.eclipse.jetty" % "jetty-runner" % "11.0.15" intransitive())
+Jetty / containerLibs := Seq("org.eclipse.jetty" % "jetty-runner" % "11.0.18" intransitive())
