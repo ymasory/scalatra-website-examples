@@ -11,7 +11,7 @@ A full tutorial on the use of validation forms is available on the
 ```sh
 $ cd 3.0/formats/scalatra-forms
 $ chmod u+x sbt
-$ ./sbt ~jetty:start
+$ ./sbt ~Jetty/start
 ```
 
 Open [http://localhost:8080](http://localhost:8080) in your browser.
